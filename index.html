@@ -25,7 +25,7 @@
         <div class="rail-divider"></div>
         <p class="rail-label">Preparación</p>
         <nav class="main-nav" id="main-nav">
-          <button class="nav-item is-active" data-view="mentor" type="button"><span class="nav-icon">✦</span>Mentor IA</button>
+          <button class="nav-item is-active" data-view="mentor" type="button"><span class="nav-icon">✦</span>Mi sesión</button>
           <button class="nav-item" data-view="inicio" type="button"><span class="nav-icon">⌂</span>Exámenes</button>
           <button class="nav-item" data-view="ruta" type="button"><span class="nav-icon">▦</span>Ruta de 18 días</button>
           <button class="nav-item" data-view="cursos" type="button"><span class="nav-icon">◈</span>Cursos</button>
@@ -90,8 +90,8 @@
           <section class="view is-visible" id="view-mentor" data-view-panel="mentor">
             <div class="mentor-hero fade-up">
               <div>
-                <p class="eyebrow">Mentor IA · sesión activa</p>
-                <h1>Hoy no vienes a leer.<br /><em>Vienes a demostrar.</em></h1>
+                <p class="eyebrow">Sesión guiada · mentor</p>
+                <h1>Aprende una parte.<br /><em>Demuestra que la dominas.</em></h1>
                 <p class="heading-copy">La ruta ahora funciona como una clase guiada: aprende una idea, mira el apoyo exacto, resuelve una tarea y comprueba si puedes explicarlo sin mirar.</p>
               </div>
               <div class="mentor-status"><span class="live-pill"><i></i> Seguimiento local</span><strong id="mentor-day-label">Día 01</strong><span id="mentor-day-status">Primera sesión recomendada</span></div>
@@ -108,7 +108,7 @@
             </div>
             <div class="mentor-two-column">
               <article class="panel mentor-contract"><div class="card-topline"><div><p class="eyebrow">Contrato de estudio</p><h2>La regla de estos 18 días</h2></div><span class="signal-mark">◉</span></div><p>Yo te doy la explicación, el orden y la retroalimentación. Tú produces evidencia. Leer sin entregar no cierra una sesión.</p><div class="contract-list"><span><b>1</b> Responde antes de mirar la solución.</span><span><b>2</b> Guarda una hoja de errores por curso.</span><span><b>3</b> Cada tercer día, explica en voz alta sin apuntes.</span></div></article>
-              <article class="panel mentor-chat"><p class="eyebrow">Examen con IA</p><h2>Trae tu respuesta al chat</h2><p>Al abrir una sesión podrás copiar un prompt preparado. Pégamelo aquí y te examinaré con repreguntas, rúbrica y dificultad creciente.</p><button class="button button-secondary" data-view-target="ruta" type="button">Elegir un día <span>→</span></button></article>
+              <article class="panel mentor-chat"><p class="eyebrow">Examen adaptativo</p><h2>Tráeme tu respuesta</h2><p>Cada subtema puede terminar en una evaluación conmigo. Pégame tu respuesta y te haré repreguntas, rúbrica y dificultad creciente.</p><button class="button button-secondary" data-view-target="ruta" type="button">Elegir un día <span>→</span></button></article>
             </div>
           </section>
 
@@ -117,7 +117,7 @@
               <div><p class="eyebrow">Plan operativo</p><h1>18 días que sí se pueden <em>seguir.</em></h1><p class="heading-copy">Cada día tiene un objetivo observable. Marca el día cuando puedas entregar el producto indicado, no cuando solo hayas leído.</p></div>
               <div class="route-summary"><strong id="route-progress-number">0 / 18</strong><span>días cerrados</span></div>
             </div>
-            <div class="route-banner panel"><div><span class="live-pill"><i></i> Reglas de la ruta</span><p>70% frente principal · 20% repaso espaciado · 10% recuperación de errores</p></div><div class="route-bar"><span id="route-progress-bar"></span></div></div>
+            <div class="route-banner panel"><div><span class="live-pill"><i></i> 6 + 6 + 6 días</span><p>Metodología (01–06) · Gestión de Riesgos (07–12) · Modelado de Datos (13–18)</p></div><div class="route-bar"><span id="route-progress-bar"></span></div></div>
             <div class="route-grid" id="route-grid"></div>
           </section>
 
@@ -126,8 +126,13 @@
             <div id="lesson-detail"></div>
           </section>
 
+          <section class="view" id="view-tema" data-view-panel="tema" hidden>
+            <button class="back-button" id="topic-back-button" data-topic-back type="button">← Volver al plan del curso</button>
+            <div id="topic-detail"></div>
+          </section>
+
           <section class="view" id="view-cursos" data-view-panel="cursos" hidden>
-            <div class="page-heading compact-heading"><div><p class="eyebrow">Mapa por curso</p><h1>Abre una ruta y <em>hazla tuya.</em></h1><p class="heading-copy">Cada ficha traduce el material entregado en lo que debes dominar, practicar y ser capaz de contestar.</p></div></div>
+            <div class="page-heading compact-heading"><div><p class="eyebrow">Mapa por curso</p><h1>Entra a las partes y <em>aprende en orden.</em></h1><p class="heading-copy">Cada curso tiene cinco partes. Abre una parte, estudia sus subtemas y responde para desbloquear el siguiente.</p></div></div>
             <div class="course-list" id="course-list"></div>
           </section>
 

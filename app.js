@@ -124,12 +124,12 @@
     ['10', 'riesgos', 'Threat Intelligence y MITRE', 'Usa OSINT con alcance limitado y traduce la conducta a táctica/técnica ATT&CK.', 'Ficha de amenaza'],
     ['11', 'riesgos', 'Redes, cloud y OWASP', 'Une firewall, IDS/IPS, TLS, responsabilidad compartida y OWASP Top 10.', 'Diagrama de arquitectura'],
     ['12', 'riesgos', 'Pentest, DevSecOps y SIEM', 'Ordena PTES, SAST/DAST/SCA, Wazuh y hallazgo técnico.', 'Reporte de hallazgo'],
-    ['13', 'riesgos', 'Simulacro integral', 'Presenta un plan con riesgo, amenaza, control, evidencia y respuesta a incidente.', 'Plan integral'],
-    ['14', 'modelado', 'Fundamentos y DER', 'Extrae entidades, atributos, relaciones y reglas de negocio desde un enunciado.', 'DER comentado'],
-    ['15', 'modelado', 'Cardinalidades y tablas', 'Convierte 1:1, 1:N, N:M, ternarias e ISA; marca PK y FK.', 'Modelo relacional'],
-    ['16', 'modelado', 'Normalización a 3FN', 'Resuelve factura, matrícula o video club y justifica cada separación.', 'Tablas en 3FN'],
-    ['17', 'modelado', 'Álgebra y SQL', 'Practica selección, proyección, join y sus equivalentes SELECT/WHERE/JOIN.', 'Banco de consultas'],
-    ['18', 'mixto', 'Tres mini-exámenes', '40 min por curso, corrección inmediata y última hoja de errores antes de rendir.', 'Hoja final de errores']
+    ['13', 'modelado', 'Base de datos y modelo', 'Distingue dato, información, BD, SGBD y niveles conceptual, lógico y físico.', 'Mapa de conceptos'],
+    ['14', 'modelado', 'DER y reglas de negocio', 'Extrae entidades, atributos, relaciones y cardinalidades desde un enunciado.', 'DER comentado'],
+    ['15', 'modelado', 'Conversión a tablas', 'Convierte 1:1, 1:N, N:M, ternarias e ISA; marca PK y FK.', 'Modelo relacional'],
+    ['16', 'modelado', 'Normalización a 3FN', 'Resuelve una relación con dependencias y justifica cada separación.', 'Tablas en 3FN'],
+    ['17', 'modelado', 'Álgebra relacional y SQL', 'Traduce selección, proyección, join y agrupación a consultas SQL.', 'Banco de consultas'],
+    ['18', 'modelado', 'Simulacro de Modelado', 'Resuelve un caso completo: DER, modelo relacional, 3FN, álgebra y SQL.', 'Examen corregido']
   ];
 
   /*
@@ -322,28 +322,28 @@
       prompt: 'Corrige mi hallazgo del Día 12 con una rúbrica de severidad, evidencia, impacto, reproducibilidad, remediación y seguridad del laboratorio.'
     },
     {
-      day: '13', course: 'riesgos', title: 'Mini-examen integral de riesgos',
-      syllabus: 'Riesgos · unidades 1–4: gobierno, riesgo, controles, seguridad técnica y respuesta.',
-      objective: 'Integrar una cadena completa: activo → amenaza → riesgo → control → evidencia → respuesta.',
-      teach: 'Una respuesta madura no enumera tecnologías aisladas. Explica el contexto, prioriza el riesgo, elige controles proporcionales y define cómo sabrás que funcionan. Para un incidente, separa detección, contención, erradicación, recuperación y lecciones aprendidas; para continuidad, relaciona BCP/DRP con objetivos de negocio.',
-      watch: [['NIST CSF 2.0 · guía oficial en español', 'https://www.nist.gov/publications/nist-cybersecurity-framework-20-resource-overview-guide-spanish-translation', 'Úsala para ordenar la respuesta y recuperación.']],
-      read: [['Sílabo IS487 2026', 'materiales/riesgos/SILABO-IS487-2026.docx', 'Revisa las cuatro unidades y su evaluación']],
-      practice: 'En 50 minutos resuelve un caso de ransomware en una pyme: matriz, controles, evidencia, plan de incidente, continuidad y comunicación ejecutiva.',
-      deliverable: 'Plan integral de riesgos y respuesta',
+      day: '13', course: 'modelado', title: 'Base de datos y modelo',
+      syllabus: 'Modelado · semanas 1–2: dato, información, BD, SGBD, modelo conceptual, lógico y físico.',
+      objective: 'Construir el mapa mental que permite entender por qué existe un modelo de datos.',
+      teach: 'Un dato aislado no explica nada; la información aparece cuando los datos se interpretan en un contexto. Una base de datos organiza datos relacionados y un SGBD permite definir, consultar, proteger y mantener esa información. El modelo conceptual habla del dominio; el lógico lo convierte en relaciones y claves; el físico decide cómo se implementa en un motor.',
+      watch: [['SQLBolt · introducción a bases relacionales', 'https://sqlbolt.com/', 'Lee la introducción y completa la primera lección interactiva.']],
+      read: [['Semana 01 · fundamentos', 'materiales/modelado/Semana01.pdf', 'Material local para conceptos base']],
+      practice: 'Para una universidad, clasifica 10 elementos como dato, información, entidad, atributo, relación, BD o SGBD. Después dibuja el paso conceptual → lógico → físico.',
+      deliverable: 'Mapa de conceptos de base de datos',
       questions: [
-        { q: '¿Qué diferencia hay entre contención y erradicación?', options: ['Contener limita el daño; erradicar elimina la causa/persistencia', 'Son sinónimos exactos', 'Contener es publicar el informe'], correct: 0, why: 'Primero se limita el impacto; después se elimina la causa y se limpia el entorno.' },
-        { q: '¿Qué hace fuerte una respuesta de seguridad?', options: ['Conecta riesgo, control, evidencia y decisión', 'Menciona muchas herramientas sin contexto', 'Oculta las limitaciones'], correct: 0, why: 'La trazabilidad permite priorizar y verificar.' }
+        { q: '¿Qué describe mejor un modelo conceptual?', options: ['El dominio y sus reglas sin depender de un motor', 'Los índices y archivos del servidor', 'La contraseña del usuario'], correct: 0, why: 'El modelo conceptual representa el significado del dominio.' },
+        { q: '¿Qué función corresponde a un SGBD?', options: ['Definir, consultar y administrar datos', 'Solo dibujar interfaces', 'Reemplazar las reglas del negocio'], correct: 0, why: 'El SGBD gestiona el ciclo de vida y acceso a la base de datos.' }
       ],
-      prompt: 'Adminístrame el mini-examen del Día 13 con un caso de ransomware. Exige que justifique cada control y luego califica como docente de Gestión de Riesgos.'
+      prompt: 'Examíname en el Día 13 de Modelado. Dame ejemplos y exige que diferencie dato, información, BD, SGBD y los tres niveles de modelado.'
     },
     {
-      day: '14', course: 'modelado', title: 'Fundamentos y diagrama entidad-relación',
-      syllabus: 'Modelado · semanas 1–3 reconstruidas: dato, BD, SGBD, modelo conceptual, entidades, atributos y relaciones.',
+      day: '14', course: 'modelado', title: 'DER: entidades, atributos y relaciones',
+      syllabus: 'Modelado · semanas 2–3: modelo entidad-relación, entidades, atributos, relaciones y reglas.',
       objective: 'Leer un enunciado y separar entidad, atributo, relación y regla de negocio.',
-      teach: 'Una entidad es algo distinguible del dominio; un atributo describe esa entidad; una relación conecta ocurrencias y tiene cardinalidad. No todo sustantivo merece tabla: “fecha de préstamo” puede ser atributo de una relación, mientras “Libro” y “Socio” tienen identidad propia. Empieza por reglas: un socio puede realizar muchos préstamos; cada préstamo pertenece a un socio.',
+      teach: 'Una entidad es algo distinguible del dominio; un atributo describe esa entidad; una relación conecta ocurrencias. No todo sustantivo merece tabla: “fecha de préstamo” puede ser atributo de la relación, mientras “Libro” y “Socio” tienen identidad propia. Primero escribe reglas en lenguaje natural y luego conviértelas en el diagrama.',
       watch: [['Del entidad-relación al modelo relacional', 'https://www.youtube.com/watch?v=i5c6oREVRFo', 'Mira el ejemplo completo después de intentar tu DER.']],
       read: [['Semana 02–03 · DER', 'materiales/modelado/Semana02.docx', 'Material local de entidades y relaciones']],
-      practice: 'Caso biblioteca: socios, libros, autores, ejemplares y préstamos. Lista entidades, atributos, identificadores, relaciones, cardinalidades y dos reglas que el diagrama debe expresar.',
+      practice: 'Caso biblioteca: socios, libros, autores, ejemplares y préstamos. Lista entidades, atributos, identificadores, relaciones y cardinalidades.',
       deliverable: 'DER comentado a mano o digital',
       questions: [
         { q: 'En una biblioteca, ¿qué suele ser entidad?', options: ['Libro o Socio, porque tiene identidad y atributos propios', 'La palabra “muchos”', 'Cada adjetivo del enunciado'], correct: 0, why: 'Una entidad representa un objeto distinguible del dominio.' },
@@ -355,10 +355,10 @@
       day: '15', course: 'modelado', title: 'Cardinalidades, claves y tablas',
       syllabus: 'Modelado · semanas 3–4: binarias, recursivas, ternarias, ISA y conversión ER a relacional.',
       objective: 'Transformar el DER a tablas sin perder reglas ni integridad referencial.',
-      teach: 'En 1:N, la FK suele ir en el lado N. En N:M necesitas una tabla asociativa cuya PK puede ser compuesta por ambas FKs y que además puede guardar atributos de la relación. En 1:1 eliges dónde ubicar la FK considerando participación y dependencia. Una relación ternaria no siempre se reemplaza por tres binarias: la combinación de las tres entidades puede ser la regla que importa.',
+      teach: 'En 1:N, la FK suele ir en el lado N. En N:M necesitas una tabla asociativa cuya PK puede ser compuesta por ambas FKs y que puede guardar atributos de la relación. En 1:1 eliges dónde ubicar la FK considerando participación y dependencia.',
       watch: [['Del entidad-relación al modelo relacional', 'https://www.youtube.com/watch?v=i5c6oREVRFo', 'Pausa antes de cada transformación y hazla tú primero.']],
       read: [['Semana 04 · mapeo a tablas', 'materiales/modelado/Semana04.pdf', 'Reglas locales de conversión']],
-      practice: 'Transforma un sistema de cursos: estudiante–matrícula–curso N:M, docente–curso 1:N y requisito recursivo curso–curso. Escribe tablas, PK, FK y restricciones.',
+      practice: 'Transforma estudiante–matrícula–curso N:M, docente–curso 1:N y requisito curso–curso recursivo. Escribe tablas, PK, FK y restricciones.',
       deliverable: 'Modelo relacional con PK/FK',
       questions: [
         { q: '¿Cómo se representa normalmente una relación N:M?', options: ['Con una tabla asociativa con FKs de ambas entidades', 'Poniendo todas las filas en una sola columna', 'Eliminando una de las entidades'], correct: 0, why: 'La tabla asociativa resuelve la multiplicidad y conserva la relación.' },
@@ -368,12 +368,12 @@
     },
     {
       day: '16', course: 'modelado', title: 'Dependencias y normalización hasta 3FN',
-      syllabus: 'Modelado · semanas 5–6 reconstruidas: dependencias funcionales, 1FN, 2FN, 3FN e integridad.',
+      syllabus: 'Modelado · semanas 5–6: dependencias funcionales, 1FN, 2FN, 3FN e integridad.',
       objective: 'Detectar anomalías y descomponer una relación justificando cada paso.',
-      teach: 'Una dependencia funcional X → Y significa que el valor de X determina un único Y. 1FN exige valores atómicos y sin grupos repetidos. 2FN elimina dependencias parciales de una clave compuesta. 3FN elimina dependencias transitivas de una clave. Ejemplo: DETALLE_FACTURA(nroFactura, codProducto, nombreProducto, cantidad). Si codProducto → nombreProducto, el nombre depende solo de parte de la clave compuesta; se separa PRODUCTO y DETALLE_FACTURA.',
-      watch: [['Normalización 1FN, 2FN y 3FN', 'https://www.youtube.com/watch?v=m7kpSO6kqY8', 'Mira el procedimiento después de marcar dependencias en tu caso.']],
+      teach: 'Una dependencia funcional X → Y significa que X determina un único Y. 1FN exige valores atómicos. 2FN elimina dependencias parciales de una clave compuesta. 3FN elimina dependencias transitivas. La pregunta no es “¿cómo parto la tabla?”, sino “¿qué hecho depende de qué clave?”.',
+      watch: [['Normalización 1FN, 2FN y 3FN', 'https://www.youtube.com/watch?v=GFQaEYEc8_8', 'Mira el procedimiento después de marcar dependencias en tu caso.']],
       read: [['Práctica de normalización', 'materiales/modelado/Practica_Normalizacion.pdf', 'Ejercicios locales priorizados']],
-      practice: 'Normaliza hasta 3FN una relación VENTA(idVenta, fecha, idCliente, nombreCliente, idProducto, nombreProducto, precio, cantidad). Escribe dependencias, clave candidata, anomalías y tablas resultantes.',
+      practice: 'Normaliza VENTA(idVenta, fecha, idCliente, nombreCliente, idProducto, nombreProducto, precio, cantidad). Escribe dependencias, clave candidata, anomalías y tablas resultantes.',
       deliverable: 'Descomposición justificada a 3FN',
       questions: [
         { q: '¿Qué elimina principalmente la 2FN?', options: ['Dependencias parciales respecto de una clave compuesta', 'Todos los valores nulos', 'La necesidad de PK'], correct: 0, why: '2FN evita que un atributo no clave dependa solo de una parte de la clave.' },
@@ -383,35 +383,110 @@
     },
     {
       day: '17', course: 'modelado', title: 'Álgebra relacional y SQL',
-      syllabus: 'Modelado · semanas 7 y laboratorio: selección, proyección, joins, división y SELECT/WHERE/JOIN/ORDER BY.',
+      syllabus: 'Modelado · semana 7 y laboratorio: selección, proyección, joins, agrupación y consultas.',
       objective: 'Pensar la consulta en álgebra y luego traducirla a SQL sin perder filas ni condiciones.',
-      teach: 'La selección σ filtra filas; la proyección π elige columnas; el join combina relaciones según una condición. Una consulta debe leerse como una pregunta: “¿qué columnas necesito?, ¿de qué tablas?, ¿qué filas cumplen?, ¿cómo ordeno?”. En SQL: SELECT columnas FROM tablas JOIN ... ON ... WHERE ... ORDER BY ... . WHERE filtra antes de agrupar; no uses JOIN sin condición salvo que realmente quieras un producto cartesiano.',
-      watch: [['SQL SELECT, WHERE, GROUP BY, HAVING, ORDER BY y JOIN', 'https://www.youtube.com/watch?v=IkWjLBIolso', 'Mira los ejemplos y reescríbelos con las tablas de tu práctica.'], ['Álgebra relacional: selección y proyección', 'https://www.youtube.com/watch?v=4xKbMxZaJHw', 'Consolida la lógica antes de memorizar sintaxis SQL.']],
-      read: [['Semana 07 · álgebra relacional', 'materiales/modelado/Semana07_Algebra_Relacional.pdf', 'Material local de operadores']],
-      practice: 'Con CLIENTE(id, nombre, ciudad), PEDIDO(id, cliente_id, fecha, total), escribe: (1) álgebra y SQL de pedidos mayores a 100, (2) clientes con pedidos, (3) clientes sin pedidos y (4) pedidos ordenados por total descendente.',
+      teach: 'La selección σ filtra filas; la proyección π elige columnas; el join combina relaciones según una condición. En SQL: SELECT columnas FROM tablas JOIN ... ON ... WHERE ... GROUP BY ... HAVING ... ORDER BY ... . Primero entiende la pregunta, luego decide tablas, condición y resultado.',
+      watch: [['SQLBolt · lecciones interactivas', 'https://sqlbolt.com/', 'Completa SELECT, filtros, ordenamiento, agregaciones y JOIN.'], ['Relational Playground', 'https://cs.rit.edu/~dataunitylab/project/relational-playground/', 'Explora la relación entre álgebra y SQL.']],
+      read: [['Semana 07 · álgebra relacional', 'materiales/modelado/Semana07_Algebra_Relacional.pdf', 'Material local de operadores'], ['PostgreSQL · tutorial SQL', 'https://www.postgresql.org/docs/current/tutorial-sql.html', 'Referencia técnica de SELECT, JOIN y agregaciones']],
+      practice: 'Con CLIENTE(id, nombre, ciudad) y PEDIDO(id, cliente_id, fecha, total), escribe álgebra y SQL para filtrar, unir, agrupar, ordenar y encontrar clientes sin pedidos.',
       deliverable: 'Banco de 8 consultas con álgebra + SQL',
       questions: [
         { q: '¿Qué operador corresponde a filtrar filas?', options: ['Selección σ', 'Proyección π', 'Renombramiento ρ únicamente'], correct: 0, why: 'La selección conserva filas que cumplen una condición.' },
         { q: '¿Qué evita un JOIN incorrecto?', options: ['Definir la condición ON que relaciona las claves', 'Quitar siempre el WHERE', 'Ordenar antes de leer las tablas'], correct: 0, why: 'La condición ON evita combinaciones espurias.' }
       ],
-      prompt: 'Sé mi examinador de SQL del Día 17. Dame un esquema pequeño y 6 preguntas: expresa cada una en álgebra relacional y SQL; incluye JOIN, ausencia de registros y ordenamiento. Corrige resultado y razonamiento.'
+      prompt: 'Sé mi examinador de SQL del Día 17. Dame un esquema pequeño y 6 preguntas: expresa cada una en álgebra relacional y SQL; incluye JOIN, ausencia de registros, GROUP BY y ordenamiento.'
     },
     {
-      day: '18', course: 'mixto', title: 'Tres mini-exámenes y hoja final de errores',
-      syllabus: 'Cierre estratégico: integra los productos observables de los tres cursos y prioriza fallos.',
-      objective: 'Llegar al examen con un diagnóstico, no con la ilusión de haber leído suficiente.',
-      teach: 'El último día es de transferencia. La memoria se prueba cuando cambia el caso, no cuando reconoces la definición. Haz tres bloques cronometrados: metodología exige alineación; riesgos exige priorización y controles; modelado exige diagrama, normalización y consulta. Corrige con una hoja de errores: concepto, por qué fallé, regla correcta y ejercicio de recuperación.',
-      watch: [['NIST CSF 2.0 · repaso', 'https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20', 'Usa la fuente oficial solo para corregir terminología.'], ['Currículo UNSCH · modelamiento de datos', 'https://enlinea2.unsch.edu.pe/wp-content/uploads/2023/05/27_P35_CURRICULO-INGENIERIA-DE-SISTEMAS.pdf', 'Contrasta el alcance público de Modelado con tus materiales locales.']],
-      read: [['Examen parcial de Modelado', 'materiales/modelado/Primer_Examen_A.pdf', 'Tipo de preguntas locales']],
-      practice: 'Bloque 1: 40 min de metodología. Bloque 2: 40 min de riesgos. Bloque 3: 60 min de modelado. Corrige cada bloque y repite solo los errores, no todo el temario.',
-      deliverable: 'Hoja final de errores + plan de repaso de 24 horas',
+      day: '18', course: 'modelado', title: 'Simulacro de Modelado',
+      syllabus: 'Cierre de Modelado: DER, modelo relacional, normalización, álgebra relacional y SQL.',
+      objective: 'Resolver un caso nuevo y defender cada decisión como si fuera el examen.',
+      teach: 'El examen no comprueba si reconoces palabras: comprueba si puedes pasar de un enunciado a una estructura coherente y luego consultarla. Trabaja en orden: reglas → DER → tablas/PK/FK → dependencias/3FN → álgebra → SQL. Si una etapa cambia, revisa las siguientes.',
+      watch: [['Examen parcial de Modelado', 'materiales/modelado/Primer_Examen_A.pdf', 'Resuelve primero sin mirar y usa el documento para comparar el tipo de pregunta.']],
+      read: [['Currículo público UNSCH · Modelamiento de Datos', 'https://enlinea2.unsch.edu.pe/wp-content/uploads/2023/05/27_P35_CURRICULO-INGENIERIA-DE-SISTEMAS.pdf', 'Referencia pública de alcance; no sustituye el material local']],
+      practice: 'En 60 minutos resuelve un caso completo de matrícula: DER, esquema relacional, 1FN–3FN, dos expresiones de álgebra y seis consultas SQL. Corrige con una hoja de errores.',
+      deliverable: 'Examen corregido + hoja de errores',
       questions: [
-        { q: '¿Qué debe ocupar el último repaso?', options: ['Errores reales y reglas que los corrigen', 'Volver a leer todo sin practicar', 'Solo los temas que ya dominas'], correct: 0, why: 'El diagnóstico convierte el tiempo final en puntos recuperables.' },
-        { q: 'En Modelado, ¿qué evidencia muestra mejor dominio?', options: ['Resolver un caso nuevo con DER, 3FN y SQL coherentes', 'Repetir definiciones de memoria', 'Ver otro video sin escribir consultas'], correct: 0, why: 'El examen exige transferir el procedimiento a un caso.' }
+        { q: '¿Qué evidencia muestra mejor dominio?', options: ['Resolver un caso nuevo con DER, 3FN y SQL coherentes', 'Repetir definiciones de memoria', 'Ver otro video sin escribir consultas'], correct: 0, why: 'El examen exige transferir el procedimiento a un caso.' },
+        { q: '¿Qué orden reduce errores?', options: ['Reglas → DER → tablas → normalización → consultas', 'SQL → colores → entidades', 'Normalizar sin conocer las claves'], correct: 0, why: 'Cada etapa depende de la anterior.' }
       ],
-      prompt: 'Adminístrame los tres mini-exámenes del Día 18 en turnos. Cronometra cada bloque, no me des pistas, califica por rúbrica y termina con mis 5 errores de mayor impacto y un repaso final.'
+      prompt: 'Adminístrame el simulacro final de Modelado en turnos: DER, modelo relacional, 3FN, álgebra y SQL. No me des pistas; califica coherencia, claves, dependencias y resultados.'
     }
   ];
+
+  const coursePlans = {
+    metodologia: {
+      parts: [
+        { id: 'met-1', number: '01', title: 'Fundamentos y método', summary: 'Aprende qué significa conocer, investigar y justificar un método.', topics: [
+          { id: 'met-1-1', title: 'Ciencia y conocimiento', explain: 'El conocimiento científico busca explicaciones ordenadas, públicas y contrastables. No todo lo que sabemos es ciencia: la diferencia está en cómo se obtiene, se argumenta y se somete a revisión.', example: 'Decir “los usuarios abandonan la app porque es lenta” es una sospecha. Medir tiempos, registrar abandonos y contrastar la relación convierte la sospecha en una pregunta investigable.', task: 'Escribe una afirmación cotidiana sobre tecnología y conviértela en una pregunta que pueda responderse con evidencia.', resource: ['Proceso de investigación científica', 'https://www.youtube.com/watch?v=BU7MTV9imJg', 'Video con recorrido por problema, objetivos, diseño y variables.'], question: '¿Qué convierte una afirmación en investigable?', options: ['Que pueda contrastarse con un procedimiento y evidencia', 'Que tenga muchas palabras técnicas', 'Que coincida con mi opinión'], correct: 0, why: 'La investigación necesita una pregunta observable y un camino justificable.' },
+          { id: 'met-1-2', title: 'Método, metodología y enfoque', explain: 'El método es el camino operativo; la metodología explica por qué ese camino es adecuado; el enfoque orienta el tipo de evidencia: cualitativa, cuantitativa o mixta.', example: 'Entrevistar estudiantes para comprender experiencias es distinto de medir 300 respuestas en una escala. Ambos pueden estudiar usabilidad, pero no producen la misma evidencia.', task: 'Clasifica tres preguntas de Sistemas como cualitativas, cuantitativas o mixtas y explica qué dato recogerías.', resource: ['Método científico y tipos de investigación', 'https://tuprepaenvideos.sep.gob.mx/es/tuprepaenvideos/Metodo_cientifico_y_tipos_de_investigacion', 'Recurso educativo para comparar métodos y tipos.'], question: '¿Qué describe mejor la metodología?', options: ['La justificación del conjunto de decisiones de investigación', 'El nombre del software usado', 'El formato de portada'], correct: 0, why: 'La metodología da coherencia y justificación al método.' }
+        ] },
+        { id: 'met-2', number: '02', title: 'Problema y objetivos', summary: 'Delimita el problema y alinea preguntas, objetivos y justificación.', topics: [
+          { id: 'met-2-1', title: 'Tema, situación y problema', explain: 'Un tema es amplio; una situación describe qué ocurre; un problema de investigación expresa una brecha que puede estudiarse. Delimitar población, espacio y tiempo evita prometer más de lo que puedes observar.', example: 'Tema: plataformas educativas. Problema: no se sabe si la baja finalización de cursos se relaciona con la usabilidad en estudiantes de primer ciclo durante 2026-I.', task: 'Convierte un tema de tu carrera en una situación problemática con población y periodo definidos.', resource: ['Planteamiento del problema', 'https://www.youtube.com/watch?v=3RxG9f-nE90', 'Video de apoyo para formular problema y objetivos.'], question: '¿Qué diferencia un tema de un problema?', options: ['El problema delimita una situación investigable y una brecha', 'El tema siempre contiene una hipótesis', 'El problema es solo el título'], correct: 0, why: 'Un problema permite formular preguntas y recoger evidencia.' },
+          { id: 'met-2-2', title: 'Preguntas y objetivos alineados', explain: 'La pregunta general y el objetivo general deben hablar del mismo fenómeno. Los objetivos específicos son pasos necesarios para responder, no una lista de actividades administrativas.', example: 'Pregunta: ¿Cómo influye la usabilidad en el abandono? Objetivo: determinar la influencia de la usabilidad en el abandono, mediante una medición aplicada a estudiantes.', task: 'Redacta una pregunta general, tres específicas, un objetivo general y tres específicos. Comprueba que cada objetivo responda una pregunta.', resource: ['Cómo redactar un objetivo · Universidad Veracruzana', 'https://innovarua.uv.mx/portal/recursos/ficha/15342/como-redactar-un-objetivo', 'Video educativo con explicación breve y clara.'], question: '¿Cuál es un buen objetivo específico?', options: ['Un paso necesario y observable para responder la pregunta general', 'Una actividad como “hacer diapositivas”', 'Una repetición decorativa del título'], correct: 0, why: 'El objetivo específico debe aportar evidencia a la respuesta.' }
+        ] },
+        { id: 'met-3', number: '03', title: 'Marco, hipótesis y variables', summary: 'Construye un marco que sirva para decidir qué observar y cómo medirlo.', topics: [
+          { id: 'met-3-1', title: 'Antecedentes y marco teórico', explain: 'Un antecedente resume qué se estudió, con qué método, qué resultado obtuvo y qué deja pendiente. El marco teórico define los conceptos que usarás y evita que las variables sean palabras vacías.', example: 'No basta citar cinco artículos sobre chatbots. Compara población, diseño, métrica de satisfacción y resultado para detectar qué falta estudiar en tu contexto.', task: 'Haz una ficha de dos antecedentes: problema, muestra, método, resultado y vacío que dejan.', resource: ['Taller UNAM · proceso de investigación', 'https://sites.google.com/fa.unam.mx/taller-investigacin-2025-2/4-el-proceso-de-investigacion', 'Material educativo sobre problema, variables y proceso.'], question: '¿Qué hace útil a un antecedente?', options: ['Permite comparar método, evidencia y vacío con tu estudio', 'Solo tiene una cita larga', 'Usa una fuente sin fecha'], correct: 0, why: 'La comparación de antecedentes justifica el nuevo estudio.' },
+          { id: 'met-3-2', title: 'Hipótesis y operacionalización', explain: 'Una hipótesis propone una relación contrastable. Operacionalizar significa pasar de un concepto a dimensiones, indicadores, ítems y escala. La matriz es el puente entre teoría y datos.', example: 'Variable satisfacción → dimensión facilidad de uso → indicador puntuación SUS → instrumento cuestionario → escala de 1 a 5.', task: 'Construye una fila de matriz para dos variables de un sistema que conozcas.', resource: ['Dimensiones de las variables', 'https://www.youtube.com/watch?v=1Cp2uXSzClY', 'Video de apoyo para dimensiones y operacionalización.'], question: '¿Qué hace medible a una variable?', options: ['Un indicador observable y un instrumento adecuado', 'Un nombre en mayúsculas', 'Una definición sin evidencia'], correct: 0, why: 'La operacionalización conecta el constructo con una medición.' }
+        ] },
+        { id: 'met-4', number: '04', title: 'Diseño y evidencia', summary: 'Elige diseño, población, muestra, técnica e instrumento sin confundirlos.', topics: [
+          { id: 'met-4-1', title: 'Diseño, población y muestra', explain: 'El diseño organiza cómo observarás el fenómeno. La población es el conjunto al que quieres referirte; la muestra es la parte que realmente observarás. La selección debe ser coherente con el objetivo.', example: 'Si quieres describir satisfacción de todos los estudiantes de primer ciclo, no puedes concluir sobre toda la universidad si solo encuestaste a un salón.', task: 'Resuelve cuatro casos decidiendo enfoque, diseño, población y muestra; escribe la razón de cada elección.', resource: ['Semana 07 · diseño, población y muestra', 'materiales/metodologia/Semana07_Diseno_Poblacion_Muestra.pdf', 'Material local del curso.'], question: '¿Qué es una muestra?', options: ['Un subconjunto seleccionado de la población', 'La totalidad de personas del país', 'El cuestionario'], correct: 0, why: 'La muestra es la parte observada del universo definido.' },
+          { id: 'met-4-2', title: 'Técnicas, instrumentos, validez y confiabilidad', explain: 'La técnica es el modo de recoger datos; el instrumento es el artefacto concreto. Validez pregunta si mides lo que dices medir; confiabilidad, si la medición es consistente.', example: 'Técnica: encuesta. Instrumento: cuestionario de usabilidad. Validez: revisión de expertos. Confiabilidad: consistencia interna o aplicación piloto.', task: 'Diseña cinco ítems para una variable y explica cómo probarías validez y confiabilidad.', resource: ['Búsqueda guiada: validez y confiabilidad', 'https://www.youtube.com/results?search_query=validez+y+confiabilidad+instrumentos+investigaci%C3%B3n', 'Apoyo audiovisual para aclarar la diferencia.'], question: '¿Qué pregunta responde la validez?', options: ['¿El instrumento mide el constructo que afirma medir?', '¿Cuántas hojas tiene?', '¿Qué color tiene?'], correct: 0, why: 'Validez es correspondencia entre concepto y medición.' }
+        ] },
+        { id: 'met-5', number: '05', title: 'Análisis y comunicación científica', summary: 'Cierra el estudio: análisis, resultados, discusión, conclusiones e integridad.', topics: [
+          { id: 'met-5-1', title: 'Resultados, discusión y conclusiones', explain: 'Resultados muestra lo que encontraste; discusión interpreta qué significa y lo compara con antecedentes; conclusión responde los objetivos; limitaciones indican hasta dónde puedes generalizar.', example: '“El promedio fue 3.8” es resultado. “La baja satisfacción coincide con X, aunque la muestra limita la generalización” es discusión responsable.', task: 'Toma una tabla ficticia y escribe un párrafo de resultados, otro de discusión y una conclusión trazable.', resource: ['Procesamiento, análisis y administración', 'materiales/metodologia/Semana10_Procesamiento_analisis_admin.pdf', 'Material local para el cierre.'], question: '¿Qué debe hacer una conclusión?', options: ['Responder objetivos con base en resultados', 'Agregar datos no recogidos', 'Repetir el marco completo'], correct: 0, why: 'La conclusión debe ser trazable a evidencia y objetivos.' },
+          { id: 'met-5-2', title: 'DSR, SLR, caso y ética', explain: 'DSR diseña y evalúa artefactos; SLR sintetiza estudios con protocolo; estudio de caso analiza un fenómeno situado; investigación-acción interviene y aprende con participantes. La ética protege personas, datos e integridad académica.', example: 'Construir y evaluar un prototipo con criterios definidos se acerca a DSR; comparar sistemáticamente investigaciones previas se acerca a SLR.', task: 'Elige una metodología para tu tema y defiéndela con propósito, evidencia, producto y riesgo ético.', resource: ['Serie UNED de metodología', 'https://uned.ac.cr/ece/noticias/ya-esta-disponible-la-serie-didactica-animada-metodologia-de-investigacion', 'Serie didáctica con episodios sobre problema e hipótesis.'], question: '¿Qué caracteriza a DSR?', options: ['Diseñar y evaluar un artefacto', 'Solo copiar antecedentes', 'Hacer una encuesta sin intervención'], correct: 0, why: 'DSR vincula problema, artefacto y evaluación.' }
+        ] }
+      ]
+    },
+    riesgos: {
+      parts: [
+        { id: 'risk-1', number: '01', title: 'Fundamentos de seguridad', summary: 'Comprende qué protege la seguridad y contra quién.', topics: [
+          { id: 'risk-1-1', title: 'CIA: confidencialidad, integridad y disponibilidad', explain: 'Confidencialidad limita accesos; integridad evita cambios indebidos; disponibilidad mantiene el servicio utilizable. Un incidente puede afectar varios pilares a la vez.', example: 'Cambiar una nota sin permiso afecta integridad; publicar el historial afecta confidencialidad; tumbar el sistema afecta disponibilidad.', task: 'Crea una tabla con cinco activos, pilar afectado, amenaza, control y evidencia.', resource: ['NIST CSF 2.0', 'https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20', 'Marco oficial para ordenar resultados de ciberseguridad.'], question: '¿Qué pilar afecta un cambio no autorizado?', options: ['Integridad', 'Disponibilidad', 'Solo diseño'], correct: 0, why: 'El dato fue alterado indebidamente.' },
+          { id: 'risk-1-2', title: 'Amenazas, vulnerabilidades y controles', explain: 'Una amenaza es una causa potencial; una vulnerabilidad es una debilidad; el riesgo combina posibilidad e impacto. El control reduce probabilidad, impacto o ambos.', example: 'Phishing es amenaza; falta de MFA es vulnerabilidad; robo de cuenta es evento; MFA y capacitación son controles.', task: 'Separa amenaza, vulnerabilidad, evento y control en seis escenarios.', resource: ['Búsqueda: threat, vulnerability, risk', 'https://www.youtube.com/results?search_query=amenaza+vulnerabilidad+riesgo+seguridad+informaci%C3%B3n', 'Apoyo introductorio.'], question: '¿Qué es una vulnerabilidad?', options: ['Una debilidad aprovechable', 'El impacto final', 'Un control preventivo'], correct: 0, why: 'La vulnerabilidad abre una posibilidad de explotación.' }
+        ] },
+        { id: 'risk-2', number: '02', title: 'Gobierno y marcos', summary: 'Compara NIST, ISO, CIS y privacidad sin tratarlos como sinónimos.', topics: [
+          { id: 'risk-2-1', title: 'NIST CSF 2.0', explain: 'NIST CSF 2.0 organiza resultados en Govern, Identify, Protect, Detect, Respond y Recover. Sirve para ordenar el programa y conversar sobre resultados, no para reemplazar todo control técnico.', example: 'Un inventario de activos cae en Identify; una política de acceso en Govern; restaurar backups en Recover.', task: 'Relaciona diez actividades de una empresa con las seis funciones NIST.', resource: ['Guía NIST CSF 2.0 en español', 'https://www.nist.gov/publications/nist-cybersecurity-framework-20-resource-overview-guide-spanish-translation', 'Fuente primaria en español.'], question: '¿Qué función ordena políticas y estrategia?', options: ['Govern', 'Detect', 'Recover'], correct: 0, why: 'Govern establece estrategia, expectativas y política.' },
+          { id: 'risk-2-2', title: 'ISO 27001, CIS y Ley 29733', explain: 'ISO 27001 define requisitos para un SGSI; CIS Controls ofrece salvaguardas priorizadas; la Ley 29733 orienta la protección de datos personales en Perú. Se pueden alinear, pero responden preguntas distintas.', example: 'ISO ayuda a gobernar el sistema; CIS sugiere controles accionables; privacidad limita cómo recolectas y tratas datos personales.', task: 'Construye una matriz con marco, propósito, evidencia y ejemplo de control.', resource: ['NIST CSF 2.0 · recursos', 'https://www.nist.gov/cyberframework', 'Punto de partida para contrastar marcos.'], question: '¿Qué diferencia mejor a ISO 27001?', options: ['Define requisitos de un sistema de gestión', 'Es una lista de ataques', 'Es un firewall'], correct: 0, why: 'ISO 27001 se centra en un SGSI auditable.' }
+        ] },
+        { id: 'risk-3', number: '03', title: 'Riesgo e inteligencia', summary: 'Valora, trata y contextualiza riesgos con evidencia.', topics: [
+          { id: 'risk-3-1', title: 'Matriz y tratamiento del riesgo', explain: 'Un registro separa activo, amenaza, vulnerabilidad, probabilidad, impacto, riesgo inherente, control y residual. Tratar es evitar, reducir, transferir o aceptar con responsable y fecha.', example: 'API de pagos: alta probabilidad y alto impacto; reducir con MFA, límites, monitoreo y pruebas, dejando riesgo residual documentado.', task: 'Elabora seis riesgos con escala 1–5, nivel, tratamiento, dueño y evidencia.', resource: ['Búsqueda: ISO 31000 y matriz', 'https://www.youtube.com/results?search_query=ISO+31000+matriz+de+riesgos+probabilidad+impacto', 'Apoyo para practicar escalas.'], question: '¿Qué queda después de aplicar controles?', options: ['Riesgo residual', 'La amenaza original sin cambios', 'El presupuesto'], correct: 0, why: 'El residual permite decidir si el tratamiento fue suficiente.' },
+          { id: 'risk-3-2', title: 'OSINT y MITRE ATT&CK', explain: 'OSINT convierte información pública en inteligencia mediante pregunta, alcance, validación y análisis. En ATT&CK, táctica expresa objetivo y técnica expresa cómo se logra.', example: 'Una página de login falsa puede mapearse a una táctica de Credential Access y una técnica concreta, siempre dentro de un análisis autorizado.', task: 'Documenta cinco fuentes públicas de un dominio propio o ficticio y mapea una conducta a táctica y técnica.', resource: ['MITRE ATT&CK · tácticas Enterprise', 'https://attack.mitre.org/tactics/enterprise/', 'Fuente oficial para clasificar conducta adversaria.'], question: '¿Qué agrega valor a OSINT?', options: ['Alcance, validación, fuente y decisión', 'Recolectar datos personales sin límite', 'Una lista larga de enlaces'], correct: 0, why: 'La inteligencia debe ser trazable y útil para decidir.' }
+        ] },
+        { id: 'risk-4', number: '04', title: 'Controles técnicos', summary: 'Conecta arquitectura, aplicaciones, cloud y DevSecOps.', topics: [
+          { id: 'risk-4-1', title: 'Redes, DMZ, IDS/IPS y TLS', explain: 'Firewall controla flujos; DMZ separa servicios expuestos; IDS detecta; IPS puede bloquear; TLS protege comunicación y PKI sostiene confianza mediante certificados.', example: 'Una API pública puede estar en DMZ, con TLS, reglas de firewall, IDS y acceso restringido a la base de datos.', task: 'Dibuja una arquitectura mínima y anota el riesgo que cubre cada control.', resource: ['Búsqueda: firewall, DMZ, IDS e IPS', 'https://www.youtube.com/results?search_query=firewall+DMZ+IDS+IPS+TLS+espa%C3%B1ol', 'Video de apoyo técnico.'], question: '¿Qué diferencia básica hay entre IDS e IPS?', options: ['IDS alerta; IPS puede prevenir o bloquear', 'IDS cifra; IPS hace backups', 'No hay diferencia'], correct: 0, why: 'La prevención en línea distingue al IPS.' },
+          { id: 'risk-4-2', title: 'OWASP, cloud y DevSecOps', explain: 'OWASP Top 10 ayuda a reconocer riesgos web; en cloud la responsabilidad se comparte; DevSecOps incorpora SAST, DAST, SCA y controles desde el ciclo de desarrollo.', example: 'SAST revisa código, DAST prueba la app en ejecución y SCA analiza dependencias de terceros.', task: 'Relaciona cuatro riesgos OWASP con control, evidencia y etapa del pipeline.', resource: ['OWASP Top 10:2021', 'https://owasp.org/Top10/2021/', 'Lista oficial para riesgos web.'], question: '¿Qué analiza SCA?', options: ['Dependencias y vulnerabilidades/licencias', 'Solo colores de la interfaz', 'El tráfico físico'], correct: 0, why: 'SCA se enfoca en componentes de terceros.' }
+        ] },
+        { id: 'risk-5', number: '05', title: 'Pentest y respuesta', summary: 'Evalúa, reporta y responde sin salir del alcance autorizado.', topics: [
+          { id: 'risk-5-1', title: 'Pentest responsable', explain: 'Un pentest empieza por autorización, alcance y reglas de compromiso. Luego reconoce, enumera, valida de forma controlada, documenta y reporta; no es ejecutar herramientas contra cualquier IP.', example: 'En Juice Shop local puedes validar una vulnerabilidad y documentar evidencia; contra un sitio ajeno no tienes autorización.', task: 'Redacta un hallazgo con activo, evidencia segura, impacto, severidad, remediación y retest.', resource: ['OWASP Juice Shop', 'https://owasp.org/www-project-juice-shop/', 'Laboratorio vulnerable para practicar legalmente.'], question: '¿Qué debe existir antes del escaneo?', options: ['Autorización, alcance y reglas de compromiso', 'Una IP al azar', 'Un informe final'], correct: 0, why: 'La autorización define el límite legal y técnico.' },
+          { id: 'risk-5-2', title: 'SIEM, SOAR, IRP y continuidad', explain: 'SIEM centraliza y correlaciona eventos; SOAR automatiza respuestas; el IRP coordina detección, contención, erradicación, recuperación y lecciones aprendidas; BCP/DRP conectan seguridad con continuidad.', example: 'Un alerta de login anómalo se correlaciona en SIEM, se bloquea con SOAR y se escala según el IRP.', task: 'Diseña el flujo de respuesta a ransomware y separa contención, erradicación, recuperación y comunicación.', resource: ['NIST SP 800-61 Rev. 3', 'https://csrc.nist.gov/pubs/sp/800/61/r3/final', 'Guía oficial de respuesta integrada con CSF 2.0.'], question: '¿Qué diferencia hay entre contención y erradicación?', options: ['Contener limita el daño; erradicar elimina causa y persistencia', 'Son sinónimos', 'Contener es publicar el informe'], correct: 0, why: 'Primero se limita el impacto y luego se elimina la causa.' }
+        ] }
+      ]
+    },
+    modelado: {
+      parts: [
+        { id: 'data-1', number: '01', title: 'Base y modelos', summary: 'Entiende qué modelas antes de dibujar tablas.', topics: [
+          { id: 'data-1-1', title: 'Dato, información, BD y SGBD', explain: 'Un dato es un valor; la información es un dato interpretado en contexto; una base organiza datos relacionados; un SGBD permite definir, consultar, proteger y mantenerlos.', example: '“18” es dato; “18 estudiantes aprobaron” es información; la BD guarda estudiantes y notas; el SGBD ejecuta la consulta y controla accesos.', task: 'Clasifica diez elementos de una universidad como dato, información, BD o SGBD.', resource: ['SQLBolt · introducción', 'https://sqlbolt.com/', 'Curso interactivo para entrar desde el modelo relacional.'], question: '¿Qué hace un SGBD?', options: ['Administra la definición, consulta y seguridad de datos', 'Solo dibuja diagramas', 'Reemplaza las reglas del negocio'], correct: 0, why: 'El SGBD gestiona el ciclo de vida de la base de datos.' },
+          { id: 'data-1-2', title: 'Modelo conceptual, lógico y físico', explain: 'El conceptual representa el dominio; el lógico lo convierte en relaciones, claves y restricciones; el físico decide tipos, índices y detalles del motor.', example: '“Un estudiante se matricula en muchos cursos” es conceptual; ESTUDIANTE, CURSO y MATRICULA es lógico; índices y tipos SQL son físicos.', task: 'Toma un sistema de matrícula y escribe una decisión para cada nivel.', resource: ['Currículo UNSCH · Modelamiento de Datos', 'https://enlinea2.unsch.edu.pe/wp-content/uploads/2023/05/27_P35_CURRICULO-INGENIERIA-DE-SISTEMAS.pdf', 'Referencia pública de alcance del curso.'], question: '¿En qué nivel aparecen PK y FK?', options: ['Modelo lógico/relacional', 'Solo modelo físico', 'Solo en el enunciado'], correct: 0, why: 'PK y FK describen la estructura lógica y sus relaciones.' }
+        ] },
+        { id: 'data-2', number: '02', title: 'DER y cardinalidades', summary: 'Lee reglas del negocio y dibuja un modelo que las exprese.', topics: [
+          { id: 'data-2-1', title: 'Entidades y atributos', explain: 'Una entidad tiene identidad propia; un atributo describe una entidad; una clave identifica una ocurrencia. Un atributo compuesto puede dividirse y uno multivaluado puede requerir otra estructura.', example: 'ESTUDIANTE tiene id, nombre y correo. Un correo alternativo multivaluado no debe guardarse como “correo1, correo2”.', task: 'Extrae entidades, atributos, clave y posibles atributos compuestos de un enunciado de biblioteca.', resource: ['DER a modelo relacional', 'https://www.youtube.com/watch?v=i5c6oREVRFo', 'Video guiado con transformación de ejemplo.'], question: '¿Qué distingue a una entidad?', options: ['Tiene identidad y atributos propios dentro del dominio', 'Es cualquier palabra del texto', 'Siempre es una acción'], correct: 0, why: 'La identidad permite distinguir ocurrencias.' },
+          { id: 'data-2-2', title: '1:1, 1:N y N:M', explain: 'La cardinalidad indica cuántas ocurrencias pueden relacionarse. En 1:N, una ocurrencia del lado 1 se asocia con muchas del lado N; en N:M se necesita una relación asociativa al pasar a tablas.', example: 'Un docente dicta muchos cursos: 1:N. Un estudiante lleva muchos cursos y un curso tiene muchos estudiantes: N:M.', task: 'Escribe la regla de negocio y cardinalidad de cinco relaciones antes de dibujarlas.', resource: ['Búsqueda guiada: ERD y cardinalidades', 'https://www.youtube.com/results?search_query=diagrama+entidad+relaci%C3%B3n+cardinalidad+1N+NM', 'Apoyo visual para practicar cardinalidades.'], question: '¿Qué requiere una relación N:M en el modelo relacional?', options: ['Una tabla asociativa', 'Una columna con muchos valores', 'Eliminar una entidad'], correct: 0, why: 'La tabla asociativa conserva ambas referencias y la relación.' }
+        ] },
+        { id: 'data-3', number: '03', title: 'Conversión a tablas', summary: 'Pasa del diagrama a un esquema relacional íntegro.', topics: [
+          { id: 'data-3-1', title: 'Reglas de mapeo ER → relacional', explain: 'Cada entidad fuerte suele convertirse en tabla. Una relación 1:N coloca la FK en el lado N; una N:M genera tabla asociativa; una 1:1 se decide según participación y dependencia.', example: 'MATRICULA(estudiante_id, curso_id, fecha, nota) resuelve la relación N:M y puede usar PK compuesta.', task: 'Convierte un DER de matrícula a tablas y marca PK, FK y nulabilidad.', resource: ['Semana 04 · mapeo', 'materiales/modelado/Semana04.pdf', 'Material local de conversión.'], question: 'En 1:N, ¿dónde suele ir la FK?', options: ['En el lado N', 'Siempre en el lado 1', 'En una tabla aleatoria'], correct: 0, why: 'Cada fila del lado N referencia una fila del lado 1.' },
+          { id: 'data-3-2', title: 'Ternarias, recursivas e ISA', explain: 'Las relaciones ternarias conectan tres entidades cuando la combinación completa expresa la regla; las recursivas conectan una entidad consigo misma; ISA representa generalización y especialización.', example: 'EMPLEADO supervisa EMPLEADO es recursiva. PERSONA puede especializarse en ESTUDIANTE y DOCENTE.', task: 'Modela una relación de proveedor, producto y proyecto; luego una jerarquía persona–estudiante/docente.', resource: ['Semana 02–03 · DER', 'materiales/modelado/Semana02.docx', 'Ejemplos locales de relaciones especiales.'], question: '¿Qué expresa una relación recursiva?', options: ['Una relación de una entidad consigo misma', 'Una tabla sin PK', 'Una relación solo N:M'], correct: 0, why: 'La misma entidad aparece en roles distintos.' }
+        ] },
+        { id: 'data-4', number: '04', title: 'Dependencias y normalización', summary: 'Reduce anomalías entendiendo qué atributo depende de qué clave.', topics: [
+          { id: 'data-4-1', title: 'Dependencias funcionales y anomalías', explain: 'X → Y significa que X determina un único Y. Las anomalías de inserción, actualización y eliminación aparecen cuando hechos diferentes se mezclan en la misma relación.', example: 'Si idProducto → nombreProducto, guardar el nombre repetido en cada detalle permite inconsistencias.', task: 'Encuentra cuatro dependencias funcionales y tres anomalías en una tabla de ventas.', resource: ['Normalización en Berkeley', 'https://courses.ischool.berkeley.edu/i202/f97/Lecture8/Lecture8.html', 'Lectura universitaria con ejemplos.'], question: '¿Qué expresa idCliente → nombreCliente?', options: ['El cliente determina un único nombre', 'El nombre determina todos los clientes', 'Una cardinalidad N:M'], correct: 0, why: 'La flecha indica determinación funcional.' },
+          { id: 'data-4-2', title: '1FN, 2FN y 3FN', explain: '1FN elimina grupos repetidos y exige valores atómicos. 2FN elimina dependencias parciales de una clave compuesta. 3FN elimina dependencias transitivas de la clave.', example: 'En DETALLE(nroFactura, codProducto, nombreProducto, cantidad), nombreProducto depende de codProducto; separar PRODUCTO evita dependencia parcial.', task: 'Normaliza VENTA hasta 3FN y justifica cada separación con la dependencia que corriges.', resource: ['Database normalization 1NF–3NF', 'https://www.youtube.com/watch?v=GFQaEYEc8_8', 'Video con recorrido paso a paso.'], question: '¿Qué corrige principalmente la 3FN?', options: ['Dependencias transitivas', 'La ausencia de una interfaz', 'Todos los duplicados posibles'], correct: 0, why: '3FN busca que los atributos no clave dependan directamente de la clave.' }
+        ] },
+        { id: 'data-5', number: '05', title: 'Álgebra y SQL', summary: 'Formula la pregunta, exprésala en álgebra y ejecútala en SQL.', topics: [
+          { id: 'data-5-1', title: 'Selección, proyección y join', explain: 'Selección σ filtra filas; proyección π elige columnas; join combina relaciones con una condición. La expresión algebraica ayuda a razonar el resultado antes de escribir sintaxis.', example: 'σ total>100(PEDIDO) corresponde a SELECT * FROM PEDIDO WHERE total > 100;', task: 'Escribe cinco preguntas en álgebra relacional y tradúcelas a SELECT, WHERE y JOIN.', resource: ['Relational Playground', 'https://cs.rit.edu/~dataunitylab/project/relational-playground/', 'Herramienta para explorar álgebra y SQL.'], question: '¿Qué operador filtra filas?', options: ['Selección σ', 'Proyección π', 'Producto sin condición'], correct: 0, why: 'La selección conserva las tuplas que cumplen el predicado.' },
+          { id: 'data-5-2', title: 'GROUP BY, HAVING y subconsultas', explain: 'GROUP BY crea grupos; las funciones COUNT, SUM o AVG calculan sobre ellos; HAVING filtra grupos. WHERE filtra filas antes de agrupar. Una subconsulta resuelve una pregunta intermedia.', example: 'SELECT ciudad, COUNT(*) FROM CLIENTE GROUP BY ciudad HAVING COUNT(*) > 2;', task: 'Resuelve consultas de conteo por ciudad, grupos con promedio alto y clientes sin pedidos.', resource: ['PostgreSQL · tutorial SQL', 'https://www.postgresql.org/docs/current/tutorial-sql.html', 'Referencia oficial para consultas, joins y agregaciones.'], question: '¿Qué cláusula filtra grupos ya agregados?', options: ['HAVING', 'WHERE', 'ON siempre'], correct: 0, why: 'HAVING se evalúa sobre grupos resultantes.' }
+        ] }
+      ]
+    }
+  };
 
   const resources = [
     ['riesgos', 'NIST CSF 2.0 · guía oficial en español', 'Fuente primaria para Govern, Identify, Protect, Detect, Respond y Recover.', 'https://www.nist.gov/publications/nist-cybersecurity-framework-20-resource-overview-guide-spanish-translation', 'Oficial'],
@@ -419,6 +494,11 @@
     ['riesgos', 'OWASP Top 10:2021', 'Lista base del sílabo para reconocer riesgos web y conectarlos con evidencias.', 'https://owasp.org/Top10/2021/', 'Oficial'],
     ['riesgos', 'OSINT Framework', 'Árbol de recursos gratuitos. Úsalo como índice y revisa si el recurso requiere registro.', 'https://osintframework.com/', 'Índice'],
     ['modelado', 'Currículo 2018 · Ingeniería de Sistemas UNSCH', 'Referencia pública que incluye modelo conceptual, ER, relacional, normalización y SQL.', 'https://enlinea2.unsch.edu.pe/wp-content/uploads/2023/05/27_P35_CURRICULO-INGENIERIA-DE-SISTEMAS.pdf', 'UNSCH'],
+    ['metodologia', 'Proceso de investigación científica', 'Video con recorrido por problema, objetivos, diseño, variables, instrumentos y errores frecuentes.', 'https://www.youtube.com/watch?v=BU7MTV9imJg', 'YouTube'],
+    ['metodologia', 'Cómo redactar un objetivo · UV', 'Recurso educativo universitario para convertir una intención en un objetivo observable.', 'https://innovarua.uv.mx/portal/recursos/ficha/15342/como-redactar-un-objetivo', 'Universidad'],
+    ['modelado', 'SQLBolt · curso interactivo', 'Practica SELECT, filtros, ordenamiento, agregaciones y JOIN directamente en el navegador.', 'https://sqlbolt.com/', 'Interactivo'],
+    ['modelado', 'PostgreSQL · tutorial SQL', 'Referencia técnica para consultas, joins y funciones de agregación.', 'https://www.postgresql.org/docs/current/tutorial-sql.html', 'Oficial'],
+    ['modelado', 'Relational Playground', 'Explora la relación entre expresiones de álgebra relacional y consultas SQL.', 'https://cs.rit.edu/~dataunitylab/project/relational-playground/', 'Interactivo'],
     ['metodologia', 'Metodología · problema y objetivos', 'Video de apoyo para destrabar la formulación del problema. Ver y volver a redactar.', 'https://www.youtube.com/watch?v=3RxG9f-nE90', 'YouTube'],
     ['modelado', 'Modelado ER → relacional', 'Ejemplo guiado del paso del diagrama entidad-relación a tablas.', 'https://www.youtube.com/watch?v=i5c6oREVRFo', 'YouTube'],
     ['modelado', 'Álgebra relacional', 'Selección y proyección explicadas paso a paso.', 'https://www.youtube.com/watch?v=4xKbMxZaJHw', 'YouTube'],
@@ -429,19 +509,27 @@
   let state = loadState();
   let currentCourse = null;
   let currentDay = null;
+  let currentPart = null;
+  let currentTopic = null;
 
   function loadState() {
-    const fallback = { route: {}, checks: {}, lessons: {} };
+    const fallback = { route: {}, checks: {}, lessons: {}, topics: {} };
     try { return { ...fallback, ...(JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}) }; } catch (error) { return fallback; }
   }
   function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); updateProgress(); renderMentor(); }
   function esc(value) { return String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char])); }
   function courseFor(id) { return courses[id] || { id, short: 'Repaso mixto', code: 'MIX', color: '#22d3ee' }; }
   function lessonFor(day) { return lessonDays.find((lesson) => lesson.day === String(day)); }
+  function planFor(id) { return coursePlans[id]; }
+  function partFor(courseId, partId) { const plan = planFor(courseId); return plan ? plan.parts.find((part) => part.id === partId) : null; }
+  function topicFor(courseId, partId, topicId) { const part = partFor(courseId, partId); return part ? part.topics.find((topic) => topic.id === topicId) : null; }
+  function topicDone(topicId) { return Boolean(state.topics[topicId]); }
+  function topicUnlocked(part, index) { return index === 0 || topicDone(part.topics[index - 1].id); }
   function lessonDone(day) { return Boolean(state.lessons[day] || state.route[day]); }
   function pendingLesson() { return lessonDays.find((lesson) => !lessonDone(lesson.day)) || lessonDays[lessonDays.length - 1]; }
-  function checkedCount() { return Object.values(state.route).filter(Boolean).length + Object.values(state.checks).filter(Boolean).length; }
-  function totalCount() { return route.length + Object.values(courses).reduce((sum, course) => sum + course.checklist.length, 0); }
+  function planTopicTotal() { return Object.values(coursePlans).reduce((sum, plan) => sum + plan.parts.reduce((partSum, part) => partSum + part.topics.length, 0), 0); }
+  function checkedCount() { return Object.values(state.route).filter(Boolean).length + Object.values(state.checks).filter(Boolean).length + Object.values(state.topics).filter(Boolean).length; }
+  function totalCount() { return route.length + Object.values(courses).reduce((sum, course) => sum + course.checklist.length, 0) + planTopicTotal(); }
   function updateProgress() {
     const percent = Math.round((checkedCount() / totalCount()) * 100);
     document.querySelector('#progress-chip').textContent = `${percent}% completado`;
@@ -461,8 +549,19 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   function openCourse(id) {
-    currentCourse = id; renderCourseDetail(id); setView('curso');
+    currentCourse = id; currentPart = planFor(id) ? planFor(id).parts[0].id : null; renderCourseDetail(id, currentPart); setView('curso');
     history.replaceState(null, '', `#curso/${id}`);
+  }
+  function openPart(courseId, partId) {
+    currentCourse = courseId; currentPart = partId;
+    renderCourseDetail(courseId, partId); setView('curso');
+    history.replaceState(null, '', '#curso/' + courseId + '/parte/' + partId);
+  }
+  function openTopic(courseId, partId, topicId) {
+    const topic = topicFor(courseId, partId, topicId); if (!topic) return;
+    currentCourse = courseId; currentPart = partId; currentTopic = topicId;
+    renderTopic(courseId, partId, topic); setView('tema');
+    history.replaceState(null, '', '#tema/' + courseId + '/' + partId + '/' + topicId);
   }
   function openLesson(day) {
     const lesson = lessonFor(day); if (!lesson) return;
@@ -517,7 +616,7 @@
       footer.insertBefore(button, label);
     });
   }
-  function renderCourseList() {
+  function renderCourseListLegacy() {
     document.querySelector('#course-list').innerHTML = Object.values(courses).map((course) => `
       <article class="course-list-card" style="--course-color:${course.color}">
         <div><span class="course-kicker">${course.code}</span><h2>${course.name}</h2><span class="muted-label">${course.weight}</span></div>
@@ -531,7 +630,7 @@
     const number = document.querySelector('#detail-progress-number'); const bar = document.querySelector('#detail-progress-bar');
     if (number) number.textContent = `${percent}%`; if (bar) bar.style.width = `${percent}%`;
   }
-  function renderCourseDetail(id) {
+  function renderCourseDetailLegacy(id) {
     const course = courses[id]; if (!course) return;
     const detail = document.querySelector('#course-detail');
     detail.innerHTML = `<div class="detail-hero" style="--course-color:${course.color}">
@@ -546,6 +645,57 @@
     </div>`;
     updateDetailProgress(id);
   }
+  function partDone(part) { return part.topics.every((topic) => topicDone(topic.id)); }
+  function partUnlocked(plan, index) { return index === 0 || partDone(plan.parts[index - 1]); }
+  function nextTopic(courseId, partId, topicId) {
+    const part = partFor(courseId, partId); if (!part) return null;
+    const index = part.topics.findIndex((topic) => topic.id === topicId);
+    return index >= 0 && part.topics[index + 1] ? part.topics[index + 1] : null;
+  }
+  function renderCourseDetail(id, partId) {
+    const course = courses[id]; const plan = planFor(id); if (!course || !plan) return;
+    const selected = partFor(id, partId) || plan.parts[0];
+    currentCourse = id; currentPart = selected.id;
+    const completed = plan.parts.reduce((sum, part) => sum + part.topics.filter((topic) => topicDone(topic.id)).length, 0);
+    const total = plan.parts.reduce((sum, part) => sum + part.topics.length, 0);
+    const parts = plan.parts.map((part, index) => {
+      const unlocked = partUnlocked(plan, index); const done = partDone(part);
+      return '<button class="plan-part ' + (part.id === selected.id ? 'is-selected ' : '') + (done ? 'is-done ' : '') + '" data-part-course="' + id + '" data-part-id="' + part.id + '" type="button" ' + (unlocked ? '' : 'disabled') + '><span class="plan-part-number">' + part.number + '</span><span><strong>' + esc(part.title) + '</strong><small>' + esc(part.summary) + '</small></span><b>' + (done ? '✓' : (unlocked ? '→' : '🔒')) + '</b></button>';
+    }).join('');
+    const topics = selected.topics.map((topic, index) => {
+      const done = topicDone(topic.id); const unlocked = topicUnlocked(selected, index);
+      return '<button class="topic-card ' + (done ? 'is-done ' : '') + (unlocked ? '' : 'is-locked') + '" data-topic-course="' + id + '" data-topic-part="' + selected.id + '" data-topic-id="' + topic.id + '" type="button" ' + (unlocked ? '' : 'disabled') + '><span class="topic-index">' + String(index + 1).padStart(2, '0') + '</span><span class="topic-card-copy"><strong>' + esc(topic.title) + '</strong><small>' + esc(topic.explain) + '</small><em>' + (done ? 'Completado · puedes repasar' : (unlocked ? 'Abrir subtema →' : 'Responde el subtema anterior para desbloquear')) + '</em></span><span class="topic-state">' + (done ? '✓' : (unlocked ? '↗' : '🔒')) + '</span></button>';
+    }).join('');
+    const checklist = course.checklist.map((item, index) => '<label><input type="checkbox" data-course-check="' + id + '-' + index + '" ' + (state.checks[id + '-' + index] ? 'checked' : '') + ' /><span>' + esc(item) + '</span></label>').join('');
+    document.querySelector('#course-detail').innerHTML =
+      '<div class="plan-hero" style="--course-color:' + course.color + '"><div class="plan-hero-copy"><span class="course-kicker">' + esc(course.code) + ' · guía por partes</span><h1>' + esc(course.name) + '</h1><p>' + esc(course.summary) + '</p><div class="plan-proof"><span>5 partes</span><span>' + total + ' subtemas</span><span>' + completed + '/' + total + ' completados</span></div></div><div class="plan-progress panel"><span class="eyebrow">Avance de la guía</span><strong>' + Math.round((completed / total) * 100) + '%</strong><div class="detail-progress"><span style="width:' + Math.round((completed / total) * 100) + '%"></span></div><p>Los subtemas se desbloquean al responder correctamente. Puedes volver a cualquiera ya completado.</p></div></div>' +
+      '<div class="plan-layout"><aside class="plan-parts panel"><div class="card-topline"><div><p class="eyebrow">Plan de aprendizaje</p><h2>Partes del curso</h2></div><span class="signal-mark">◈</span></div><div class="plan-part-list">' + parts + '</div></aside><section class="plan-content panel"><div class="plan-content-head"><div><span class="eyebrow">Parte ' + esc(selected.number) + '</span><h2>' + esc(selected.title) + '</h2><p>' + esc(selected.summary) + '</p></div><span class="part-count">' + selected.topics.filter((topic) => topicDone(topic.id)).length + '/' + selected.topics.length + '</span></div><div class="topic-list">' + topics + '</div></section></div>' +
+      '<article class="detail-section panel plan-checklist"><div class="card-topline"><div><p class="eyebrow">Cuando termines las partes</p><h2>Prueba de dominio del curso</h2></div><span class="muted-label">No marques por leer</span></div><div class="detail-checklist">' + checklist + '</div>' + (course.securityNote ? '<div class="security-note">' + esc(course.securityNote) + '</div>' : '') + '</article>';
+  }
+  function renderTopic(courseId, partId, topic) {
+    const course = courses[courseId]; const part = partFor(courseId, partId); if (!course || !part) return;
+    const next = nextTopic(courseId, partId, topic.id);
+    const resource = topic.resource ? '<a class="topic-resource" href="' + esc(topic.resource[1]) + '" target="_blank" rel="noopener"><span><strong>' + esc(topic.resource[0]) + '</strong><small>' + esc(topic.resource[2]) + '</small></span><span>Abrir ↗</span></a>' : '';
+    const options = topic.options.map((option, index) => '<button class="quiz-option topic-answer" type="button" data-topic-answer data-topic-course="' + courseId + '" data-topic-part="' + partId + '" data-topic-id="' + topic.id + '" data-correct="' + (index === topic.correct) + '">' + esc(option) + '</button>').join('');
+    const done = topicDone(topic.id);
+    let continuation = '';
+    if (done && next) continuation = '<button class="button button-primary" data-topic-next data-topic-course="' + courseId + '" data-topic-part="' + partId + '" data-topic-id="' + next.id + '" type="button">Siguiente subtema <span>→</span></button>';
+    if (done && !next) {
+      const plan = planFor(courseId); const partIndex = plan.parts.findIndex((item) => item.id === partId); const nextPart = plan.parts[partIndex + 1];
+      continuation = nextPart ? '<button class="button button-primary" data-part-course="' + courseId + '" data-part-id="' + nextPart.id + '" type="button">Abrir Parte ' + nextPart.number + ' <span>→</span></button>' : '<button class="button button-secondary" data-course-target="' + courseId + '" type="button">Volver al plan <span>↗</span></button>';
+    }
+    document.querySelector('#topic-back-button').dataset.topicBackCourse = courseId;
+    document.querySelector('#topic-back-button').dataset.topicBackPart = partId;
+    document.querySelector('#topic-detail').innerHTML =
+      '<div class="topic-hero" style="--course-color:' + course.color + '"><div><span class="course-kicker">' + esc(course.code) + ' · Parte ' + esc(part.number) + ' · subtema</span><h1>' + esc(topic.title) + '</h1><p>Aprende la idea, contrástala con el recurso y responde para desbloquear el siguiente subtema.</p></div><span class="topic-hero-mark">' + (done ? '✓' : '0' + (part.topics.findIndex((item) => item.id === topic.id) + 1)) + '</span></div>' +
+      '<div class="topic-layout"><article class="topic-reading panel"><p class="eyebrow">Explicación</p><h2>Qué significa</h2><p class="topic-explain">' + esc(topic.explain) + '</p><div class="topic-example"><span>Ejemplo</span><p>' + esc(topic.example) + '</p></div><div class="topic-task"><span>Hazlo ahora</span><p>' + esc(topic.task) + '</p></div><div class="topic-source-block"><p class="eyebrow">Recurso concreto</p>' + resource + '</div></article><article class="topic-check panel"><p class="eyebrow">Comprueba antes de avanzar</p><h2>Pregunta de control</h2><p class="topic-question">' + esc(topic.question) + '</p><div class="quiz-options">' + options + '</div><p class="quiz-feedback" id="topic-feedback"></p><p class="quiz-why" id="topic-why">' + (done ? 'Correcto. Ya puedes continuar.' : '') + '</p><div class="topic-continuation">' + continuation + '</div></article></div>';
+  }
+  function renderCourseList() {
+    document.querySelector('#course-list').innerHTML = Object.values(courses).map((course) => {
+      const plan = planFor(course.id); const topicTotal = plan.parts.reduce((sum, part) => sum + part.topics.length, 0); const topicDoneCount = plan.parts.reduce((sum, part) => sum + part.topics.filter((topic) => topicDone(topic.id)).length, 0);
+      return '<article class="course-list-card course-plan-card" style="--course-color:' + course.color + '"><div><span class="course-kicker">' + esc(course.code) + '</span><h2>' + esc(course.name) + '</h2><span class="muted-label">' + esc(course.weight) + '</span></div><div class="course-plan-copy"><p>' + esc(course.summary) + '</p><div class="course-plan-meta"><span>5 partes</span><span>' + topicDoneCount + '/' + topicTotal + ' subtemas</span><span>Guía interactiva</span></div></div><button class="button" data-course-target="' + course.id + '" type="button">Abrir plan <span>↗</span></button></article>';
+    }).join('');
+  }
   function renderLesson(lesson) {
     const course = courseFor(lesson.course);
     const watch = (lesson.watch || []).map((item) => '<a class="lesson-source" href="' + esc(item[1]) + '" target="_blank" rel="noopener"><span><strong>' + esc(item[0]) + '</strong><small>' + esc(item[2]) + '</small></span><span>Ver ↗</span></a>').join('');
@@ -558,7 +708,7 @@
     document.querySelector('#lesson-detail').innerHTML =
       '<div class="lesson-hero" style="--course-color:' + course.color + '">' +
         '<div class="lesson-hero-copy"><span class="course-kicker">' + esc(course.code) + ' · Día ' + esc(lesson.day) + ' · sesión mentor</span><h1>' + esc(lesson.title) + '</h1><p>' + esc(lesson.objective) + '</p></div>' +
-        '<div class="lesson-syllabus"><span class="eyebrow">Alineación con el sílabo</span><strong>' + esc(course.short) + '</strong><span>' + esc(lesson.syllabus) + '</span></div>' +
+        '<div class="lesson-syllabus"><span class="eyebrow">Qué cubre este día</span><strong>' + esc(course.short) + '</strong><span>' + esc(lesson.syllabus) + '</span></div>' +
       '</div>' +
       '<div class="lesson-flow panel"><div><span class="flow-number">01</span><strong>Entiende</strong><span>Microclase</span></div><div><span class="flow-number">02</span><strong>Contrasta</strong><span>Fuente guiada</span></div><div><span class="flow-number">03</span><strong>Produce</strong><span>Entrega</span></div><div><span class="flow-number">04</span><strong>Comprueba</strong><span>Mini-quiz</span></div></div>' +
       '<div class="lesson-grid">' +
@@ -583,6 +733,17 @@
     document.addEventListener('click', (event) => {
       const nav = event.target.closest('.nav-item'); if (nav) { setView(nav.dataset.view); history.replaceState(null, '', `#${nav.dataset.view}`); return; }
       const targetView = event.target.closest('[data-view-target]'); if (targetView) { setView(targetView.dataset.viewTarget); history.replaceState(null, '', `#${targetView.dataset.viewTarget}`); return; }
+      const topicBack = event.target.closest('[data-topic-back]'); if (topicBack) { openPart(topicBack.dataset.topicBackCourse, topicBack.dataset.topicBackPart); return; }
+      const partTarget = event.target.closest('[data-part-course]'); if (partTarget) { openPart(partTarget.dataset.partCourse, partTarget.dataset.partId); return; }
+      const topicTarget = event.target.closest('[data-topic-course]'); if (topicTarget && !event.target.closest('[data-topic-answer]') && !event.target.closest('[data-topic-next]')) { openTopic(topicTarget.dataset.topicCourse, topicTarget.dataset.topicPart, topicTarget.dataset.topicId); return; }
+      const topicNext = event.target.closest('[data-topic-next]'); if (topicNext) { openTopic(topicNext.dataset.topicCourse, topicNext.dataset.topicPart, topicNext.dataset.topicId); return; }
+      const topicAnswer = event.target.closest('[data-topic-answer]'); if (topicAnswer) {
+        const courseId = topicAnswer.dataset.topicCourse; const partId = topicAnswer.dataset.topicPart; const topicId = topicAnswer.dataset.topicId; const topic = topicFor(courseId, partId, topicId); const feedback = document.querySelector('#topic-feedback'); const why = document.querySelector('#topic-why'); const correct = topicAnswer.dataset.correct === 'true';
+        document.querySelectorAll('[data-topic-answer]').forEach((button) => button.classList.remove('is-correct', 'is-wrong'));
+        topicAnswer.classList.add(correct ? 'is-correct' : 'is-wrong');
+        if (correct) { state.topics[topicId] = true; saveState(); renderTopic(courseId, partId, topic); showToast('Respuesta correcta. Subtema desbloqueado.'); } else { feedback.textContent = 'Todavía no. Revisa la explicación y vuelve a intentarlo.'; feedback.className = 'quiz-feedback is-visible is-bad'; why.textContent = topic.explain; why.className = 'quiz-why is-visible'; }
+        return;
+      }
       const dayTarget = event.target.closest('[data-day-target]'); if (dayTarget) { openLesson(dayTarget.dataset.dayTarget); return; }
       const copyButton = event.target.closest('[data-copy-prompt]'); if (copyButton) { copyText(copyButton.dataset.copyPrompt).then(() => showToast('Prompt copiado. Pégalo en este chat para comenzar.')); return; }
       const quizOption = event.target.closest('[data-quiz-option]'); if (quizOption) {
@@ -609,13 +770,16 @@
       const courseCheck = event.target.closest('[data-course-check]'); if (courseCheck) { state.checks[courseCheck.dataset.courseCheck] = courseCheck.checked; saveState(); updateDetailProgress(currentCourse); showToast(courseCheck.checked ? 'Dominio registrado.' : 'Dominio pendiente.'); }
       const lessonCheck = event.target.closest('[data-lesson-check]'); if (lessonCheck) { state.lessons[lessonCheck.dataset.lessonCheck] = lessonCheck.checked; state.route[lessonCheck.dataset.lessonCheck] = lessonCheck.checked; saveState(); renderRoute(); decorateRouteCards(); showToast(lessonCheck.checked ? 'Sesión cerrada: ahora puedes avanzar.' : 'Sesión reabierta.'); }
     });
-    document.querySelector('#reset-progress').addEventListener('click', () => { if (window.confirm('¿Reiniciar todos los checks de la ruta?')) { state = { route: {}, checks: {}, lessons: {} }; saveState(); renderRoute(); decorateRouteCards(); if (currentCourse) renderCourseDetail(currentCourse); if (currentDay) renderLesson(lessonFor(currentDay)); showToast('Progreso reiniciado.'); } });
+    document.querySelector('#reset-progress').addEventListener('click', () => { if (window.confirm('¿Reiniciar todos los checks de la ruta?')) { state = { route: {}, checks: {}, lessons: {}, topics: {} }; saveState(); renderRoute(); decorateRouteCards(); if (currentCourse) renderCourseDetail(currentCourse, currentPart); if (currentDay) renderLesson(lessonFor(currentDay)); if (currentTopic) renderTopic(currentCourse, currentPart, topicFor(currentCourse, currentPart, currentTopic)); showToast('Progreso reiniciado.'); } });
     document.querySelector('#global-search').addEventListener('input', (event) => { const query = event.target.value.trim().toLowerCase(); document.querySelectorAll('[data-resource-search]').forEach((card) => card.classList.toggle('is-hidden', Boolean(query) && !card.dataset.resourceSearch.includes(query))); if (query) { setView('recursos'); history.replaceState(null, '', '#recursos'); } });
   }
   function hydrateFromHash() {
     const hash = window.location.hash.replace('#', '');
-    if (hash.startsWith('curso/')) openCourse(hash.split('/')[1]);
-    else if (hash.startsWith('dia/')) openLesson(hash.split('/')[1]);
+    const pieces = hash.split('/');
+    if (hash.startsWith('tema/') && pieces.length >= 4) openTopic(pieces[1], pieces[2], pieces[3]);
+    else if (hash.startsWith('curso/') && pieces[2] === 'parte' && pieces[3]) openPart(pieces[1], pieces[3]);
+    else if (hash.startsWith('curso/')) openCourse(pieces[1]);
+    else if (hash.startsWith('dia/')) openLesson(pieces[1]);
     else if (['mentor', 'inicio', 'ruta', 'cursos', 'recursos'].includes(hash)) setView(hash);
     else setView('mentor');
   }
