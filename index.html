@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="description" content="Ruta intensiva de 18 días para preparar Metodología, Gestión de Riesgos y Modelado de Datos." />
+    <title>Ruta 18 · tres exámenes, una estrategia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <div class="app-shell">
+      <aside class="app-rail" aria-label="Navegación principal">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true">18</div>
+          <div><strong>ruta</strong><span>tres finales · 18 días</span></div>
+        </div>
+        <div class="rail-divider"></div>
+        <p class="rail-label">Preparación</p>
+        <nav class="main-nav" id="main-nav">
+          <button class="nav-item is-active" data-view="mentor" type="button"><span class="nav-icon">✦</span>Mentor IA</button>
+          <button class="nav-item" data-view="inicio" type="button"><span class="nav-icon">⌂</span>Exámenes</button>
+          <button class="nav-item" data-view="ruta" type="button"><span class="nav-icon">▦</span>Ruta de 18 días</button>
+          <button class="nav-item" data-view="cursos" type="button"><span class="nav-icon">◈</span>Cursos</button>
+          <button class="nav-item" data-view="recursos" type="button"><span class="nav-icon">↗</span>Recursos</button>
+        </nav>
+        <div class="rail-bottom">
+          <div class="privacy-badge"><span class="status-dot"></span><div><strong>Progreso local</strong><small>Se guarda en este navegador</small></div></div>
+          <button class="rail-action" id="reset-progress" type="button"><span>↺</span> Reiniciar progreso</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Ingeniería de Sistemas</span><span class="slash">/</span><strong>Ruta intensiva</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box" for="global-search"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="Buscar tema, recurso o práctica" /></label>
+            <span class="progress-chip" id="progress-chip">0% completado</span>
+          </div>
+        </header>
+
+        <div class="content-wrap">
+          <section class="view" id="view-inicio" data-view-panel="inicio">
+            <div class="page-heading fade-up">
+              <div>
+                <p class="eyebrow">Modo examen · lectura estratégica</p>
+                <h1>Tres cursos.<br /><em>Una ruta visible.</em></h1>
+                <p class="heading-copy">Empieza por lo que te van a evaluar. Abre un curso, identifica el producto que debes saber resolver y avanza con una práctica concreta.</p>
+              </div>
+              <button class="button button-primary pressable" data-view-target="ruta" type="button"><span>▦</span> Ver los 18 días</button>
+            </div>
+
+            <div class="metric-grid fade-up" style="--delay: 80ms">
+              <article class="metric-card"><span class="metric-label">Exámenes finales</span><strong>03</strong><span class="metric-note">Una ficha por curso</span></article>
+              <article class="metric-card"><span class="metric-label">Días de enfoque</span><strong>18</strong><span class="metric-note">6 bloques de consolidación</span></article>
+              <article class="metric-card"><span class="metric-label">Rutina diaria</span><strong>3×</strong><span class="metric-note">Concepto · práctica · recuerdo</span></article>
+              <article class="metric-card accent-metric"><span class="metric-label">Progreso</span><strong id="overview-progress">0%</strong><span class="metric-note">Se actualiza con tus checks</span></article>
+            </div>
+
+            <div class="section-header"><div><p class="eyebrow">Portada de examen</p><h2>Elige el primer frente</h2></div><span class="muted-label">Orden recomendado: base → práctica → simulacro</span></div>
+            <div class="exam-grid" id="exam-grid"></div>
+
+            <div class="two-column lower-grid">
+              <article class="panel protocol-card fade-up" style="--delay: 160ms">
+                <div class="card-topline"><div><p class="eyebrow">Protocolo diario</p><h2>90 · 60 · 30</h2></div><span class="signal-mark">◒</span></div>
+                <div class="protocol-steps">
+                  <div><strong>90 min</strong><span>Entender el bloque del día y resumirlo en una hoja.</span></div>
+                  <div><strong>60 min</strong><span>Resolver una práctica sin mirar la respuesta.</span></div>
+                  <div><strong>30 min</strong><span>Recordar en voz alta y corregir errores.</span></div>
+                </div>
+                <p class="card-note">La meta no es leer todo. Es poder explicar, aplicar y detectar dónde te equivocas.</p>
+              </article>
+              <article class="panel warning-card fade-up" style="--delay: 220ms">
+                <div class="card-topline"><span class="live-pill amber-pill"><i></i> Dato de control</span><span class="muted-label">versión base</span></div>
+                <h2>Modelado de Datos queda provisional</h2>
+                <p>El RAR contiene semanas, prácticas y exámenes, pero no un sílabo formal. La ruta está reconstruida desde ese material y desde el currículo público de Ingeniería de Sistemas. Cuando recibas el sílabo, se ajusta la secuencia.</p>
+                <p class="card-note"><strong>Correlación:</strong> no hay un prerrequisito formal verificado entre los tres cursos. La secuencia es estratégica: metodología ordena tu razonamiento, riesgos te da el contexto de seguridad y modelado entrena la resolución técnica.</p>
+                <button class="text-button" data-course-target="modelado" type="button">Ver qué se infirió <span>→</span></button>
+              </article>
+            </div>
+          </section>
+
+          <section class="view is-visible" id="view-mentor" data-view-panel="mentor">
+            <div class="mentor-hero fade-up">
+              <div>
+                <p class="eyebrow">Mentor IA · sesión activa</p>
+                <h1>Hoy no vienes a leer.<br /><em>Vienes a demostrar.</em></h1>
+                <p class="heading-copy">La ruta ahora funciona como una clase guiada: aprende una idea, mira el apoyo exacto, resuelve una tarea y comprueba si puedes explicarlo sin mirar.</p>
+              </div>
+              <div class="mentor-status"><span class="live-pill"><i></i> Seguimiento local</span><strong id="mentor-day-label">Día 01</strong><span id="mentor-day-status">Primera sesión recomendada</span></div>
+            </div>
+            <div class="mentor-next panel fade-up" style="--delay:90ms">
+              <div class="mentor-next-copy"><span class="eyebrow">Tu siguiente sesión</span><h2 id="mentor-next-title">Cargando la ruta…</h2><p id="mentor-next-copy">La sesión incluye explicación, recursos y mini-quiz. No la cierres hasta producir la entrega.</p></div>
+              <div class="mentor-next-actions"><button class="button button-primary" id="open-next-lesson" data-day-target="01" type="button">Abrir sesión <span>→</span></button><button class="button button-secondary" data-view-target="ruta" type="button">Ver los 18 días</button></div>
+            </div>
+            <div class="mentor-flow-grid">
+              <article class="mentor-flow-card"><span class="flow-number">01</span><div><h3>Aprende</h3><p>Lee la microclase y conecta el concepto con lo que aparece en el sílabo.</p></div></article>
+              <article class="mentor-flow-card"><span class="flow-number">02</span><div><h3>Mira / consulta</h3><p>Abre un video o fuente primaria solo para resolver el punto indicado.</p></div></article>
+              <article class="mentor-flow-card"><span class="flow-number">03</span><div><h3>Resuelve</h3><p>Entrega el producto del día: matriz, diagrama, consulta, informe o respuesta.</p></div></article>
+              <article class="mentor-flow-card"><span class="flow-number">04</span><div><h3>Comprueba</h3><p>Haz el mini-quiz y vuelve al chat con el prompt de mentor para un examen adaptativo.</p></div></article>
+            </div>
+            <div class="mentor-two-column">
+              <article class="panel mentor-contract"><div class="card-topline"><div><p class="eyebrow">Contrato de estudio</p><h2>La regla de estos 18 días</h2></div><span class="signal-mark">◉</span></div><p>Yo te doy la explicación, el orden y la retroalimentación. Tú produces evidencia. Leer sin entregar no cierra una sesión.</p><div class="contract-list"><span><b>1</b> Responde antes de mirar la solución.</span><span><b>2</b> Guarda una hoja de errores por curso.</span><span><b>3</b> Cada tercer día, explica en voz alta sin apuntes.</span></div></article>
+              <article class="panel mentor-chat"><p class="eyebrow">Examen con IA</p><h2>Trae tu respuesta al chat</h2><p>Al abrir una sesión podrás copiar un prompt preparado. Pégamelo aquí y te examinaré con repreguntas, rúbrica y dificultad creciente.</p><button class="button button-secondary" data-view-target="ruta" type="button">Elegir un día <span>→</span></button></article>
+            </div>
+          </section>
+
+          <section class="view" id="view-ruta" data-view-panel="ruta" hidden>
+            <div class="page-heading compact-heading">
+              <div><p class="eyebrow">Plan operativo</p><h1>18 días que sí se pueden <em>seguir.</em></h1><p class="heading-copy">Cada día tiene un objetivo observable. Marca el día cuando puedas entregar el producto indicado, no cuando solo hayas leído.</p></div>
+              <div class="route-summary"><strong id="route-progress-number">0 / 18</strong><span>días cerrados</span></div>
+            </div>
+            <div class="route-banner panel"><div><span class="live-pill"><i></i> Reglas de la ruta</span><p>70% frente principal · 20% repaso espaciado · 10% recuperación de errores</p></div><div class="route-bar"><span id="route-progress-bar"></span></div></div>
+            <div class="route-grid" id="route-grid"></div>
+          </section>
+
+          <section class="view" id="view-dia" data-view-panel="dia" hidden>
+            <button class="back-button" data-view-target="ruta" type="button">← Volver a la ruta</button>
+            <div id="lesson-detail"></div>
+          </section>
+
+          <section class="view" id="view-cursos" data-view-panel="cursos" hidden>
+            <div class="page-heading compact-heading"><div><p class="eyebrow">Mapa por curso</p><h1>Abre una ruta y <em>hazla tuya.</em></h1><p class="heading-copy">Cada ficha traduce el material entregado en lo que debes dominar, practicar y ser capaz de contestar.</p></div></div>
+            <div class="course-list" id="course-list"></div>
+          </section>
+
+          <section class="view" id="view-curso" data-view-panel="curso" hidden>
+            <button class="back-button" data-view-target="cursos" type="button">← Volver a cursos</button>
+            <div id="course-detail"></div>
+          </section>
+
+          <section class="view" id="view-recursos" data-view-panel="recursos" hidden>
+            <div class="page-heading compact-heading"><div><p class="eyebrow">Recursos seleccionados</p><h1>Menos enlaces. <em>Más dirección.</em></h1><p class="heading-copy">Los enlaces están asociados a un bloque concreto. Si un recurso no ayuda a resolver una pregunta o una práctica, se queda fuera por ahora.</p></div></div>
+            <div class="resource-note panel"><strong>Cómo usar YouTube</strong><span>Ver solo el segmento que resuelve tu duda, anotar el procedimiento y volver al ejercicio. El video acompaña la práctica; no la reemplaza.</span></div>
+            <div class="resources-grid" id="resources-grid"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
