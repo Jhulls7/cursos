@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const STORAGE_KEY = 'ruta-18-dias-progress-v1';
+  const STORAGE_KEY = 'ruta-18-dias-progress-v2';
   const courseColors = { metodologia: '#22d3ee', riesgos: '#f59e0b', modelado: '#a3e635' };
 
   const courses = {
@@ -109,6 +109,16 @@
         ['Álgebra relacional: selección y proyección', 'Primer video para dominar la lógica de las consultas antes de SQL.', 'https://www.youtube.com/watch?v=4xKbMxZaJHw']
       ]
     }
+  };
+
+  // La secuencia prioriza la dificultad estimada para que el estudiante use
+  // los primeros días —cuando todavía tiene más energía— en la parte técnica.
+  // No mezcla materias: cada bloque se cierra antes de abrir el siguiente.
+  const courseOrder = ['modelado', 'riesgos', 'metodologia'];
+  const courseStrategy = {
+    modelado: { difficulty: 'Más exigente', block: 'Bloque 01 · días 01–06', focus: 'Resolver: DER · 3FN · álgebra · SQL' },
+    riesgos: { difficulty: 'Exigencia media-alta', block: 'Bloque 02 · días 07–12', focus: 'Analizar: riesgo · controles · respuesta' },
+    metodologia: { difficulty: 'Más conceptual', block: 'Bloque 03 · días 13–18', focus: 'Argumentar: problema · diseño · evidencia' }
   };
 
   const route = [
@@ -413,6 +423,44 @@
     }
   ];
 
+  // Reindexamos la agenda sin duplicar todo el contenido de las lecciones.
+  // Así el orden de dificultad queda centralizado y es fácil ajustarlo cuando
+  // llegue el sílabo oficial.
+  const studyRoute = courseOrder.flatMap((courseId) => route.filter((item) => item[1] === courseId)).map((item, index) => [
+    String(index + 1).padStart(2, '0'), item[1], item[2], item[3], item[4]
+  ]);
+  const studyLessons = courseOrder.flatMap((courseId) => lessonDays.filter((lesson) => lesson.course === courseId)).map((lesson, index) => {
+    const newDay = String(index + 1).padStart(2, '0');
+    return { ...lesson, day: newDay, prompt: (lesson.prompt || '').replace(/Día \d{2}/g, 'Día ' + newDay) };
+  });
+
+  // Una lectura principal no basta para un tema difícil. Estas rutas
+  // complementarias dan una segunda explicación, práctica o referencia
+  // oficial sin obligar a buscar enlaces a ciegas.
+  const topicResourcePacks = {
+    modelado: [
+      ['SQLBolt · práctica interactiva', 'https://sqlbolt.com/', 'Ejercicios breves de SELECT, filtros, agregaciones y JOIN.'],
+      ['PostgreSQL · tutorial SQL', 'https://www.postgresql.org/docs/current/tutorial-sql.html', 'Referencia oficial para sintaxis y consultas.'],
+      ['Relational Playground', 'https://cs.rit.edu/~dataunitylab/project/relational-playground/', 'Relaciona álgebra relacional con SQL.'],
+      ['Berkeley · normalización', 'https://courses.ischool.berkeley.edu/i202/f97/Lecture8/Lecture8.html', 'Lectura universitaria para dependencias y formas normales.'],
+      ['ER → modelo relacional', 'https://www.youtube.com/watch?v=i5c6oREVRFo', 'Ejemplo visual del paso del diagrama a tablas.']
+    ],
+    riesgos: [
+      ['NIST CSF 2.0', 'https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20', 'Marco oficial para ordenar resultados de seguridad.'],
+      ['NIST CSF 2.0 · español', 'https://www.nist.gov/publications/nist-cybersecurity-framework-20-resource-overview-guide-spanish-translation', 'Apoyo de lectura en español.'],
+      ['MITRE ATT&CK · Enterprise', 'https://attack.mitre.org/tactics/enterprise/', 'Tácticas y técnicas para contextualizar amenazas.'],
+      ['OWASP Top 10', 'https://owasp.org/Top10/2021/', 'Riesgos web para reconocer controles y evidencias.'],
+      ['OWASP Juice Shop', 'https://owasp.org/www-project-juice-shop/', 'Laboratorio vulnerable para practicar con autorización.']
+    ],
+    metodologia: [
+      ['Proceso de investigación · UNAM', 'https://sites.google.com/fa.unam.mx/taller-investigacin-2025-2/4-el-proceso-de-investigacion', 'Secuencia universitaria del proceso de investigación.'],
+      ['Objetivos · Universidad Veracruzana', 'https://innovarua.uv.mx/portal/recursos/ficha/15342/como-redactar-un-objetivo', 'Ayuda para escribir objetivos observables.'],
+      ['Metodología · UNED', 'https://uned.ac.cr/ece/noticias/ya-esta-disponible-la-serie-didactica-animada-metodologia-de-investigacion', 'Serie didáctica para repasar conceptos clave.'],
+      ['Proceso de investigación científica', 'https://www.youtube.com/watch?v=BU7MTV9imJg', 'Recorrido completo para ordenar problema, diseño y análisis.'],
+      ['Problema y objetivos', 'https://www.youtube.com/watch?v=3RxG9f-nE90', 'Apoyo audiovisual para formular y delimitar.']
+    ]
+  };
+
   const coursePlans = {
     metodologia: {
       parts: [
@@ -519,17 +567,17 @@
   function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); updateProgress(); renderMentor(); }
   function esc(value) { return String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char])); }
   function courseFor(id) { return courses[id] || { id, short: 'Repaso mixto', code: 'MIX', color: '#22d3ee' }; }
-  function lessonFor(day) { return lessonDays.find((lesson) => lesson.day === String(day)); }
+  function lessonFor(day) { return studyLessons.find((lesson) => lesson.day === String(day)); }
   function planFor(id) { return coursePlans[id]; }
   function partFor(courseId, partId) { const plan = planFor(courseId); return plan ? plan.parts.find((part) => part.id === partId) : null; }
   function topicFor(courseId, partId, topicId) { const part = partFor(courseId, partId); return part ? part.topics.find((topic) => topic.id === topicId) : null; }
   function topicDone(topicId) { return Boolean(state.topics[topicId]); }
   function topicUnlocked(part, index) { return index === 0 || topicDone(part.topics[index - 1].id); }
   function lessonDone(day) { return Boolean(state.lessons[day] || state.route[day]); }
-  function pendingLesson() { return lessonDays.find((lesson) => !lessonDone(lesson.day)) || lessonDays[lessonDays.length - 1]; }
+  function pendingLesson() { return studyLessons.find((lesson) => !lessonDone(lesson.day)) || studyLessons[studyLessons.length - 1]; }
   function planTopicTotal() { return Object.values(coursePlans).reduce((sum, plan) => sum + plan.parts.reduce((partSum, part) => partSum + part.topics.length, 0), 0); }
   function checkedCount() { return Object.values(state.route).filter(Boolean).length + Object.values(state.checks).filter(Boolean).length + Object.values(state.topics).filter(Boolean).length; }
-  function totalCount() { return route.length + Object.values(courses).reduce((sum, course) => sum + course.checklist.length, 0) + planTopicTotal(); }
+  function totalCount() { return studyRoute.length + courseOrder.reduce((sum, id) => sum + courses[id].checklist.length, 0) + planTopicTotal(); }
   function updateProgress() {
     const percent = Math.round((checkedCount() / totalCount()) * 100);
     document.querySelector('#progress-chip').textContent = `${percent}% completado`;
@@ -587,16 +635,22 @@
     button.innerHTML = lessonDone(lesson.day) ? 'Revisar sesión <span>→</span>' : 'Abrir sesión <span>→</span>';
   }
   function renderExamCards() {
-    document.querySelector('#exam-grid').innerHTML = Object.values(courses).map((course) => `
-      <article class="exam-card fade-up" style="--course-color:${course.color}; --delay:${Object.keys(courses).indexOf(course.id) * 70}ms">
-        <div><span class="course-kicker">${course.code} · examen</span><h3>${course.short}</h3><p>${course.summary}</p></div>
+    document.querySelector('#exam-grid').innerHTML = courseOrder.map((courseId, index) => {
+      const course = courses[courseId]; const strategy = courseStrategy[courseId];
+      return `<article class="exam-card fade-up" style="--course-color:${course.color}; --delay:${index * 70}ms">
+        <div><span class="course-kicker">${course.code} · ${strategy.difficulty}</span><h3>${course.short}</h3><p>${course.summary}</p></div>
         <div class="exam-footer"><span class="exam-weight">${course.weight}</span><button class="mini-arrow" data-course-target="${course.id}" type="button" aria-label="Abrir ${esc(course.name)}">↗</button></div>
-      </article>`).join('');
+      </article>`;
+    }).join('');
   }
   function renderRoute() {
-    document.querySelector('#route-grid').innerHTML = route.map(([day, courseId, title, detail, deliverable]) => {
+    let previousCourse = null;
+    document.querySelector('#route-grid').innerHTML = studyRoute.map(([day, courseId, title, detail, deliverable]) => {
       const course = courseFor(courseId); const done = Boolean(state.route[day]);
-      return `<article class="route-card ${done ? 'is-done' : ''}" style="--course-color:${course.color}">
+      const strategy = courseStrategy[courseId];
+      const blockHeading = previousCourse === courseId ? '' : `<div class="route-block-heading" style="--course-color:${course.color}"><span class="course-kicker">${strategy.block}</span><strong>${course.short}</strong><span>${strategy.focus}</span></div>`;
+      previousCourse = courseId;
+      return blockHeading + `<article class="route-card ${done ? 'is-done' : ''}" style="--course-color:${course.color}">
         <div class="route-card-top"><div><span class="day-index">Día ${day}</span><h3>${title}</h3></div><span class="route-course-tag">${course.short || 'Repaso mixto'}</span></div>
         <p>${detail}</p><small>Entrega: ${deliverable}</small>
         <div class="route-card-footer"><span class="muted-label">${courseId === 'mixto' ? 'Cierre' : course.code}</span><label class="check-control"><input type="checkbox" data-route-check="${day}" ${done ? 'checked' : ''} /> Día cerrado</label></div>
@@ -617,11 +671,11 @@
     });
   }
   function renderCourseListLegacy() {
-    document.querySelector('#course-list').innerHTML = Object.values(courses).map((course) => `
+    document.querySelector('#course-list').innerHTML = courseOrder.map((courseId) => { const course = courses[courseId]; return `
       <article class="course-list-card" style="--course-color:${course.color}">
         <div><span class="course-kicker">${course.code}</span><h2>${course.name}</h2><span class="muted-label">${course.weight}</span></div>
         <p>${course.summary}</p><button class="button" data-course-target="${course.id}" type="button">Abrir guía <span>↗</span></button>
-      </article>`).join('');
+      </article>`; }).join('');
   }
   function updateDetailProgress(id) {
     const course = courses[id]; if (!course) return;
@@ -652,6 +706,15 @@
     const index = part.topics.findIndex((topic) => topic.id === topicId);
     return index >= 0 && part.topics[index + 1] ? part.topics[index + 1] : null;
   }
+  function resourcesForTopic(courseId, topic) {
+    const candidates = [topic.resource, ...(topicResourcePacks[courseId] || [])].filter(Boolean);
+    const seen = new Set();
+    return candidates.filter((item) => {
+      if (seen.has(item[1])) return false;
+      seen.add(item[1]);
+      return true;
+    }).slice(0, 4);
+  }
   function renderCourseDetail(id, partId) {
     const course = courses[id]; const plan = planFor(id); if (!course || !plan) return;
     const selected = partFor(id, partId) || plan.parts[0];
@@ -675,7 +738,8 @@
   function renderTopic(courseId, partId, topic) {
     const course = courses[courseId]; const part = partFor(courseId, partId); if (!course || !part) return;
     const next = nextTopic(courseId, partId, topic.id);
-    const resource = topic.resource ? '<a class="topic-resource" href="' + esc(topic.resource[1]) + '" target="_blank" rel="noopener"><span><strong>' + esc(topic.resource[0]) + '</strong><small>' + esc(topic.resource[2]) + '</small></span><span>Abrir ↗</span></a>' : '';
+    const topicResources = resourcesForTopic(courseId, topic);
+    const resource = topicResources.map((item, index) => '<a class="topic-resource" href="' + esc(item[1]) + '" target="_blank" rel="noopener"><span><strong>' + (index === 0 ? '01 · ' : String(index + 1).padStart(2, '0') + ' · ') + esc(item[0]) + '</strong><small>' + esc(item[2]) + '</small></span><span>Abrir ↗</span></a>').join('');
     const options = topic.options.map((option, index) => '<button class="quiz-option topic-answer" type="button" data-topic-answer data-topic-course="' + courseId + '" data-topic-part="' + partId + '" data-topic-id="' + topic.id + '" data-correct="' + (index === topic.correct) + '">' + esc(option) + '</button>').join('');
     const done = topicDone(topic.id);
     let continuation = '';
@@ -688,12 +752,13 @@
     document.querySelector('#topic-back-button').dataset.topicBackPart = partId;
     document.querySelector('#topic-detail').innerHTML =
       '<div class="topic-hero" style="--course-color:' + course.color + '"><div><span class="course-kicker">' + esc(course.code) + ' · Parte ' + esc(part.number) + ' · subtema</span><h1>' + esc(topic.title) + '</h1><p>Aprende la idea, contrástala con el recurso y responde para desbloquear el siguiente subtema.</p></div><span class="topic-hero-mark">' + (done ? '✓' : '0' + (part.topics.findIndex((item) => item.id === topic.id) + 1)) + '</span></div>' +
-      '<div class="topic-layout"><article class="topic-reading panel"><p class="eyebrow">Explicación</p><h2>Qué significa</h2><p class="topic-explain">' + esc(topic.explain) + '</p><div class="topic-example"><span>Ejemplo</span><p>' + esc(topic.example) + '</p></div><div class="topic-task"><span>Hazlo ahora</span><p>' + esc(topic.task) + '</p></div><div class="topic-source-block"><p class="eyebrow">Recurso concreto</p>' + resource + '</div></article><article class="topic-check panel"><p class="eyebrow">Comprueba antes de avanzar</p><h2>Pregunta de control</h2><p class="topic-question">' + esc(topic.question) + '</p><div class="quiz-options">' + options + '</div><p class="quiz-feedback" id="topic-feedback"></p><p class="quiz-why" id="topic-why">' + (done ? 'Correcto. Ya puedes continuar.' : '') + '</p><div class="topic-continuation">' + continuation + '</div></article></div>';
+      '<div class="topic-layout"><article class="topic-reading panel"><p class="eyebrow">Explicación</p><h2>Qué significa</h2><p class="topic-explain">' + esc(topic.explain) + '</p><div class="topic-example"><span>Ejemplo</span><p>' + esc(topic.example) + '</p></div><div class="topic-task"><span>Hazlo ahora</span><p>' + esc(topic.task) + '</p></div><div class="topic-source-block"><div class="card-topline"><p class="eyebrow">Ruta de recursos</p><span class="muted-label">Explica → practica → verifica</span></div>' + resource + '</div></article><article class="topic-check panel"><p class="eyebrow">Comprueba antes de avanzar</p><h2>Pregunta de control</h2><p class="topic-question">' + esc(topic.question) + '</p><div class="quiz-options">' + options + '</div><p class="quiz-feedback" id="topic-feedback"></p><p class="quiz-why" id="topic-why">' + (done ? 'Correcto. Ya puedes continuar.' : '') + '</p><div class="topic-continuation">' + continuation + '</div></article></div>';
   }
   function renderCourseList() {
-    document.querySelector('#course-list').innerHTML = Object.values(courses).map((course) => {
+    document.querySelector('#course-list').innerHTML = courseOrder.map((courseId) => {
+      const course = courses[courseId]; const strategy = courseStrategy[courseId];
       const plan = planFor(course.id); const topicTotal = plan.parts.reduce((sum, part) => sum + part.topics.length, 0); const topicDoneCount = plan.parts.reduce((sum, part) => sum + part.topics.filter((topic) => topicDone(topic.id)).length, 0);
-      return '<article class="course-list-card course-plan-card" style="--course-color:' + course.color + '"><div><span class="course-kicker">' + esc(course.code) + '</span><h2>' + esc(course.name) + '</h2><span class="muted-label">' + esc(course.weight) + '</span></div><div class="course-plan-copy"><p>' + esc(course.summary) + '</p><div class="course-plan-meta"><span>5 partes</span><span>' + topicDoneCount + '/' + topicTotal + ' subtemas</span><span>Guía interactiva</span></div></div><button class="button" data-course-target="' + course.id + '" type="button">Abrir plan <span>↗</span></button></article>';
+      return '<article class="course-list-card course-plan-card" style="--course-color:' + course.color + '"><div><span class="course-kicker">' + esc(strategy.block) + '</span><h2>' + esc(course.name) + '</h2><span class="difficulty-label">' + esc(strategy.difficulty) + '</span></div><div class="course-plan-copy"><p>' + esc(course.summary) + '</p><div class="course-plan-meta"><span>5 partes</span><span>' + topicDoneCount + '/' + topicTotal + ' subtemas</span><span>' + esc(strategy.focus) + '</span></div></div><button class="button" data-course-target="' + course.id + '" type="button">Abrir plan <span>↗</span></button></article>';
     }).join('');
   }
   function renderLesson(lesson) {

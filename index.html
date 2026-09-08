@@ -50,7 +50,7 @@
           <section class="view" id="view-inicio" data-view-panel="inicio">
             <div class="page-heading fade-up">
               <div>
-                <p class="eyebrow">Modo examen · lectura estratégica</p>
+                <p class="eyebrow">Modo examen · dificultad descendente</p>
                 <h1>Tres cursos.<br /><em>Una ruta visible.</em></h1>
                 <p class="heading-copy">Empieza por lo que te van a evaluar. Abre un curso, identifica el producto que debes saber resolver y avanza con una práctica concreta.</p>
               </div>
@@ -59,12 +59,12 @@
 
             <div class="metric-grid fade-up" style="--delay: 80ms">
               <article class="metric-card"><span class="metric-label">Exámenes finales</span><strong>03</strong><span class="metric-note">Una ficha por curso</span></article>
-              <article class="metric-card"><span class="metric-label">Días de enfoque</span><strong>18</strong><span class="metric-note">6 bloques de consolidación</span></article>
+              <article class="metric-card"><span class="metric-label">Días de enfoque</span><strong>18</strong><span class="metric-note">6 Modelado · 6 Riesgos · 6 Metodología</span></article>
               <article class="metric-card"><span class="metric-label">Rutina diaria</span><strong>3×</strong><span class="metric-note">Concepto · práctica · recuerdo</span></article>
               <article class="metric-card accent-metric"><span class="metric-label">Progreso</span><strong id="overview-progress">0%</strong><span class="metric-note">Se actualiza con tus checks</span></article>
             </div>
 
-            <div class="section-header"><div><p class="eyebrow">Portada de examen</p><h2>Elige el primer frente</h2></div><span class="muted-label">Orden recomendado: base → práctica → simulacro</span></div>
+            <div class="section-header"><div><p class="eyebrow">Portada de examen</p><h2>Empieza por el bloque más exigente</h2></div><span class="muted-label">Modelado → Riesgos → Metodología</span></div>
             <div class="exam-grid" id="exam-grid"></div>
 
             <div class="two-column lower-grid">
@@ -79,9 +79,9 @@
               </article>
               <article class="panel warning-card fade-up" style="--delay: 220ms">
                 <div class="card-topline"><span class="live-pill amber-pill"><i></i> Dato de control</span><span class="muted-label">versión base</span></div>
-                <h2>Modelado de Datos queda provisional</h2>
-                <p>El RAR contiene semanas, prácticas y exámenes, pero no un sílabo formal. La ruta está reconstruida desde ese material y desde el currículo público de Ingeniería de Sistemas. Cuando recibas el sílabo, se ajusta la secuencia.</p>
-                <p class="card-note"><strong>Correlación:</strong> no hay un prerrequisito formal verificado entre los tres cursos. La secuencia es estratégica: metodología ordena tu razonamiento, riesgos te da el contexto de seguridad y modelado entrena la resolución técnica.</p>
+                <h2>La dificultad baja de forma intencional</h2>
+                <p>Modelado abre la ruta porque exige más práctica acumulativa: DER, claves, normalización, álgebra y SQL. Después sigue Riesgos y cerramos con Metodología, que es más conceptual y argumentativa.</p>
+                <p class="card-note"><strong>Correlación:</strong> los tres cursos no se mezclan dentro del día. Solo se conectan cuando una idea común ayuda —por ejemplo, datos, evidencia o controles— y se estudian en el bloque que corresponde.</p>
                 <button class="text-button" data-course-target="modelado" type="button">Ver qué se infirió <span>→</span></button>
               </article>
             </div>
@@ -117,7 +117,7 @@
               <div><p class="eyebrow">Plan operativo</p><h1>18 días que sí se pueden <em>seguir.</em></h1><p class="heading-copy">Cada día tiene un objetivo observable. Marca el día cuando puedas entregar el producto indicado, no cuando solo hayas leído.</p></div>
               <div class="route-summary"><strong id="route-progress-number">0 / 18</strong><span>días cerrados</span></div>
             </div>
-            <div class="route-banner panel"><div><span class="live-pill"><i></i> 6 + 6 + 6 días</span><p>Metodología (01–06) · Gestión de Riesgos (07–12) · Modelado de Datos (13–18)</p></div><div class="route-bar"><span id="route-progress-bar"></span></div></div>
+            <div class="route-banner panel"><div><span class="live-pill"><i></i> 6 + 6 + 6 días</span><p>Modelado (01–06) · Gestión de Riesgos (07–12) · Metodología (13–18). Cierra un bloque antes de iniciar el siguiente.</p></div><div class="route-bar"><span id="route-progress-bar"></span></div></div>
             <div class="route-grid" id="route-grid"></div>
           </section>
 
@@ -132,7 +132,7 @@
           </section>
 
           <section class="view" id="view-cursos" data-view-panel="cursos" hidden>
-            <div class="page-heading compact-heading"><div><p class="eyebrow">Mapa por curso</p><h1>Entra a las partes y <em>aprende en orden.</em></h1><p class="heading-copy">Cada curso tiene cinco partes. Abre una parte, estudia sus subtemas y responde para desbloquear el siguiente.</p></div></div>
+            <div class="page-heading compact-heading"><div><p class="eyebrow">Mapa por dificultad</p><h1>Un curso a la vez.<br /><em>Sin saltos innecesarios.</em></h1><p class="heading-copy">El orden recomendado es Modelado, Gestión de Riesgos y Metodología. Dentro de cada curso, las partes y subtemas se desbloquean de forma progresiva.</p></div></div>
             <div class="course-list" id="course-list"></div>
           </section>
 

@@ -137,6 +137,9 @@ h2 { letter-spacing: -.025em; line-height: 1.12; }
 .route-bar, .detail-progress { height: 9px; overflow: hidden; border-radius: 999px; background: rgba(162, 184, 211, .12); }
 .route-bar span, .detail-progress span { display: block; height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--primary), #60a5fa); transition: width 220ms ease; }
 .route-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.route-block-heading { grid-column: 1 / -1; display: grid; grid-template-columns: auto auto 1fr; align-items: baseline; gap: 12px; margin-top: 12px; padding: 12px 2px 2px; border-bottom: 1px solid color-mix(in srgb, var(--course-color) 30%, transparent); }
+.route-block-heading strong { color: var(--course-color); font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; }
+.route-block-heading > span:last-child { color: var(--text-soft); font-size: .78rem; }
 .route-card { display: grid; min-height: 218px; gap: 18px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius-md); background: rgba(17, 24, 45, .58); transition: border-color 180ms ease, transform 180ms ease, opacity 180ms ease; }
 .route-card:hover { transform: translateY(-3px); border-color: var(--line-strong); }
 .route-card.is-done { opacity: .72; border-color: rgba(34, 211, 238, .35); }
@@ -155,6 +158,7 @@ h2 { letter-spacing: -.025em; line-height: 1.12; }
 .course-list-card p { color: var(--text-soft); font-size: .82rem; }
 .course-list-card .button { border-color: color-mix(in srgb, var(--course-color) 42%, transparent); color: var(--course-color); }
 .course-list-card .button:hover { background: color-mix(in srgb, var(--course-color) 12%, transparent); }
+.difficulty-label { display: inline-flex; margin-top: 9px; padding: 5px 8px; border: 1px solid color-mix(in srgb, var(--course-color) 28%, transparent); border-radius: 999px; color: var(--course-color); font-size: .68rem; font-weight: 600; }
 .course-kicker { color: var(--course-color); font-size: .74rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
 .back-button { display: inline-flex; margin-bottom: 24px; padding: 4px 0; }
 .detail-hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(250px, .65fr); gap: 16px; margin-bottom: 20px; }
@@ -342,6 +346,7 @@ h2 { letter-spacing: -.025em; line-height: 1.12; }
 .topic-task span { color: var(--course-color); }
 .topic-example p, .topic-task p { margin-top: 7px; color: var(--text-soft); font-size: .82rem; line-height: 1.6; }
 .topic-source-block { margin-top: 22px; }
+.topic-source-block .card-topline { margin-bottom: 8px; }
 .topic-resource { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; padding: 12px; border: 1px solid var(--line); border-radius: 11px; color: var(--text-soft); text-decoration: none; }
 .topic-resource:hover { border-color: var(--course-color); color: var(--text); }
 .topic-resource strong, .topic-resource small { display: block; }
@@ -401,6 +406,7 @@ h2 { letter-spacing: -.025em; line-height: 1.12; }
   .prompt-box .button { justify-self: start; }
   .protocol-steps { grid-template-columns: 1fr; }
   .route-banner { grid-template-columns: 1fr; }
+  .route-block-heading { grid-template-columns: 1fr; gap: 5px; }
   .route-summary { justify-items: start; margin-top: 18px; }
   .course-list-card { grid-template-columns: 1fr; gap: 13px; }
   .course-list-card .button { grid-column: auto; }
